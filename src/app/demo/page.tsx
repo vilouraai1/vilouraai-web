@@ -126,6 +126,8 @@ const CALL_SCRIPT_STEPS = [
     body: "After the call, you get a short text: who called, what they wanted, and what was booked.",
   },
 ];
+
+const FAQS = [
   {
     q: "Is this the real VilouraAI forecast?",
     a: "No. This is a straight-line sketch so you can feel what a forecast looks like on your own numbers. The real Sprint fits seasonality and holidays and shows probability bands, so you see a range, not one line.",
