@@ -1,3 +1,5 @@
+import { BOOKING_URL, PRISQO_URL } from "~/app/_components/offers";
+
 const GOOGLE_PROFILE_URL = "https://share.google/56agIYRJv4O5Jcj5Q";
 
 export function LocationHeader() {
@@ -14,10 +16,12 @@ export function LocationHeader() {
           VilouraAI
         </a>
         <a
-          href="/#contact"
+          href={BOOKING_URL}
+          target="_blank"
+          rel="noopener noreferrer"
           className="rounded-full bg-pine px-5 py-2.5 text-sm font-bold text-paper transition-colors hover:bg-pine-deep"
         >
-          Get my free forecast
+          Book a 15-min call
         </a>
       </nav>
     </header>
@@ -31,15 +35,27 @@ export function LocationFooter() {
         <p className="font-display text-xl font-black tracking-tight">
           VilouraAI
         </p>
-        <nav aria-label="Footer" className="flex flex-wrap gap-6 text-sm text-paper/60">
-          <a href="/#how-it-works" className="transition-colors hover:text-paper">
-            How it works
+        <nav aria-label="Footer" className="flex flex-wrap justify-center gap-6 text-sm text-paper/60">
+          <a href="/#services" className="transition-colors hover:text-paper">
+            Services
           </a>
-          <a href="/#pricing" className="transition-colors hover:text-paper">
+          <a href="/pricing" className="transition-colors hover:text-paper">
             Pricing
           </a>
           <a href="/#faq" className="transition-colors hover:text-paper">
             FAQ
+          </a>
+          <a href="/website" className="transition-colors hover:text-paper">
+            Website Launch
+          </a>
+          <a
+            href="/ai-receptionist"
+            className="transition-colors hover:text-paper"
+          >
+            AI Receptionist
+          </a>
+          <a href="/bundle" className="transition-colors hover:text-paper">
+            Launch Bundle
           </a>
           <a href="/locations" className="transition-colors hover:text-paper">
             Locations
@@ -49,6 +65,14 @@ export function LocationFooter() {
           </a>
           <a href="/demo" className="transition-colors hover:text-paper">
             Demo
+          </a>
+          <a
+            href={PRISQO_URL}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="transition-colors hover:text-paper"
+          >
+            Free AI-visibility check
           </a>
           <a
             href={GOOGLE_PROFILE_URL}

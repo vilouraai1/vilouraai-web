@@ -48,7 +48,7 @@ export function StickyCta() {
           href="#contact"
           className="block rounded-full bg-pine px-6 py-3.5 text-center font-display text-base font-bold text-paper transition-colors active:bg-pine-deep"
         >
-          Get my free forecast
+          Book a 15-min call
         </a>
       </div>
     </div>
