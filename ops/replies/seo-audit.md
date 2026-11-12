@@ -149,3 +149,9 @@
 - `/locations` H1 ("Forecasting for the whole Metroplex.") still reads
   forecast-only; the metadata is now services-first, but a matching H1 /
   body rewrite belongs in the city-copy pass above.
+
+## Pushed
+
+- Pushed to PR #1 branch `muse-viloura-services` on 2026-11-12, commit
+  `0a1637d6ed15c5ca3a0b8a39ce9d488f26c09185` — all 25 changed/new files above.
+  Nothing merged or deployed.
