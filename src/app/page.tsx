@@ -29,6 +29,8 @@ function SectionHeading({ children }: { children: React.ReactNode }) {
 
 const NAV_LINKS = [
   { href: "#services", label: "Services" },
+  { href: "/website", label: "Website" },
+  { href: "/ai-receptionist", label: "AI Receptionist" },
   { href: "/pricing", label: "Pricing" },
   { href: "#faq", label: "FAQ" },
 ];
@@ -46,6 +48,20 @@ function Nav() {
         >
           VilouraAI
         </a>
+        <nav
+          aria-label="Primary links"
+          className="hidden items-center gap-6 text-sm font-bold text-ink/70 md:flex"
+        >
+          {NAV_LINKS.map((link) => (
+            <a
+              key={link.href}
+              href={link.href}
+              className="transition-colors hover:text-pine"
+            >
+              {link.label}
+            </a>
+          ))}
+        </nav>
         <a
           href={BOOKING_URL}
           target="_blank"
@@ -627,6 +643,11 @@ const SECTORS = [
     body: "Drivers call when the car breaks, not when it suits you. Answer every call, book the bay, and text the owner the summary.",
     href: "/auto-repair",
   },
+  {
+    title: "New businesses",
+    body: "Just opened? Look established from day one — a website in 7 days, every call answered, and a listing people can find.",
+    href: "/new-business",
+  },
 ];
 
 function Sectors() {
@@ -880,7 +901,11 @@ function Footer() {
           </a>
         </nav>
         <p className="text-sm text-paper/60">
-          © 2026 VilouraAI LLC · Lewisville, Texas
+          © 2026 VilouraAI LLC · Lewisville, Texas ·{" "}
+          <a href="tel:+14694965431" className="hover:text-paper">
+            (469) 496-5431
+          </a>{" "}
+          · Open daily 7:00 AM–7:00 PM
         </p>
       </div>
     </footer>
@@ -899,6 +924,21 @@ function StructuredData() {
         description:
           "VilouraAI builds a new mobile-first website in 7 days and answers every call with an AI receptionist that books the appointment — for Texas local businesses. Website Launch $497, AI Receptionist $149/mo, Launch Bundle $597. Free 12-week booking forecast.",
         email: CONTACT_EMAIL,
+        telephone: "+1-469-496-5431",
+        openingHoursSpecification: {
+          "@type": "OpeningHoursSpecification",
+          dayOfWeek: [
+            "Monday",
+            "Tuesday",
+            "Wednesday",
+            "Thursday",
+            "Friday",
+            "Saturday",
+            "Sunday",
+          ],
+          opens: "07:00",
+          closes: "19:00",
+        },
         sameAs: ["https://share.google/56agIYRJv4O5Jcj5Q"],
         address: {
           "@type": "PostalAddress",
@@ -968,6 +1008,13 @@ function StructuredData() {
             },
           ],
         },
+      },
+      {
+        "@type": "WebSite",
+        "@id": "https://vilouraai.com/#website",
+        url: "https://vilouraai.com",
+        name: "VilouraAI",
+        publisher: { "@id": "https://vilouraai.com/#business" },
       },
       {
         "@type": "FAQPage",

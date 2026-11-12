@@ -12,9 +12,9 @@ import {
 import { Reveal } from "~/app/_components/Reveal";
 
 export const metadata: Metadata = {
-  title: "Pricing: Website Launch $497, AI Receptionist $149/mo | VilouraAI",
+  title: "Pricing — Website $497, AI Receptionist $149/mo",
   description:
-    "Plain prices, no contract. Website Launch $497 one-time, AI Receptionist $149/mo with the first 14 days free, Launch Bundle $597 — $497 for the first 10 founding clients.",
+    "Plain prices, no contract. Website Launch $497 one-time, AI Receptionist $149/mo, first 14 days free, Launch Bundle $597.",
   alternates: { canonical: "https://vilouraai.com/pricing" },
   openGraph: {
     title: "Pricing: Website Launch $497, AI Receptionist $149/mo | VilouraAI",
@@ -70,6 +70,33 @@ export default function PricingPage() {
         description:
           "Plain prices, no contract. Website Launch $497 one-time, AI Receptionist $149/mo, Launch Bundle $597.",
         isPartOf: { "@id": "https://vilouraai.com/#website" },
+      },
+      {
+        "@type": "Offer",
+        name: "Website Launch",
+        price: "497",
+        priceCurrency: "USD",
+        url: "https://vilouraai.com/website",
+        description:
+          "Mobile-first 5-page site, online booking button, Google Business Profile tune-up, basic local SEO, live in 7 days.",
+      },
+      {
+        "@type": "Offer",
+        name: "AI Receptionist",
+        price: "149",
+        priceCurrency: "USD",
+        url: "https://vilouraai.com/ai-receptionist",
+        description:
+          "Answers every call 24/7, books appointments, answers FAQs, texts the owner a summary, missed-call text-back. No setup fee, cancel anytime, first 14 days free.",
+      },
+      {
+        "@type": "Offer",
+        name: "Launch Bundle",
+        price: "597",
+        priceCurrency: "USD",
+        url: "https://vilouraai.com/bundle",
+        description:
+          "Website Launch plus the first month of AI Receptionist plus a Prisqo AI-visibility report ($19 value).",
       },
       {
         "@type": "FAQPage",
@@ -197,6 +224,20 @@ export default function PricingPage() {
                 dive.{" "}
                 <a href="/demo" className="font-bold text-pine hover:underline">
                   Try the forecast demo
+                </a>
+                . Not sure your current site is worth keeping? Get a{" "}
+                <a
+                  href="/free-seo-audit"
+                  className="font-bold text-pine hover:underline"
+                >
+                  free SEO audit
+                </a>{" "}
+                first — then compare it with the{" "}
+                <a
+                  href="/bundle"
+                  className="font-bold text-pine hover:underline"
+                >
+                  $597 Launch Bundle
                 </a>
                 .
               </p>

@@ -8,9 +8,9 @@ import { BOOKING_URL } from "~/app/_components/offers";
 import { Reveal } from "~/app/_components/Reveal";
 
 export const metadata: Metadata = {
-  title: "AI Receptionist $149/mo — every call answered, 24/7 | VilouraAI",
+  title: "AI Receptionist $149/mo — every call answered",
   description:
-    "An AI receptionist that answers every call in a natural voice, books appointments, answers FAQs about hours, prices, and insurance, and texts you a summary. $149/mo, no setup fee, first 14 days free.",
+    "An AI receptionist that answers every call in a natural voice, books appointments, and texts you a summary. $149/mo, no setup fee, first 14 days free.",
   alternates: { canonical: "https://vilouraai.com/ai-receptionist" },
   openGraph: {
     title: "AI Receptionist $149/mo — every call answered, 24/7 | VilouraAI",
@@ -392,6 +392,23 @@ export default function AiReceptionistPage() {
               >
                 Book a 15-min call
               </a>
+              <p className="mt-6 max-w-2xl leading-relaxed text-ink/70">
+                The receptionist answers the calls your new site sends it —{" "}
+                <a
+                  href="/website"
+                  className="font-bold text-pine hover:underline"
+                >
+                  Website Launch is $497, live in 7 days
+                </a>
+                . Wondering how your current site is doing? Start with a{" "}
+                <a
+                  href="/free-seo-audit"
+                  className="font-bold text-pine hover:underline"
+                >
+                  free SEO audit
+                </a>
+                .
+              </p>
             </Reveal>
           </div>
         </section>

@@ -8,9 +8,9 @@ import { BOOKING_URL } from "~/app/_components/offers";
 import { Reveal } from "~/app/_components/Reveal";
 
 export const metadata: Metadata = {
-  title: "Launch Bundle $597 — website + AI receptionist + visibility report | VilouraAI",
+  title: "Launch Bundle $597 — website + AI receptionist",
   description:
-    "Website Launch ($497) plus the first month of AI Receptionist ($149 value) plus a Prisqo AI-visibility report ($19 value) — $597. First 10 founding clients pay $497, with the receptionist locked at $129/mo for 12 months.",
+    "Website Launch ($497) plus the first month of AI Receptionist ($149 value) plus a Prisqo AI-visibility report ($19 value). Bundle $597.",
   alternates: { canonical: "https://vilouraai.com/bundle" },
   openGraph: {
     title: "Launch Bundle $597 — website + AI receptionist + visibility report | VilouraAI",

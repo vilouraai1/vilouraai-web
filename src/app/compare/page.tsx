@@ -7,7 +7,7 @@ import {
 import { Reveal } from "~/app/_components/Reveal";
 
 export const metadata: Metadata = {
-  title: "VilouraAI vs spreadsheets vs gut feel | VilouraAI",
+  title: "VilouraAI vs spreadsheets vs gut feel",
   description:
     "Compare VilouraAI's 12-week booking forecast with spreadsheets and gut feel: probability bands vs static rows, your real numbers vs memory, a plan vs a hunch.",
   alternates: { canonical: "https://vilouraai.com/compare" },

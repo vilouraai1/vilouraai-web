@@ -10,7 +10,7 @@ const SITE_URL = "https://vilouraai.com";
 const SITE_TITLE =
   "VilouraAI: Stop losing customers to voicemail and a broken website";
 const SITE_DESCRIPTION =
-  "VilouraAI builds your new mobile-first website in 7 days and answers every call with an AI receptionist that books the appointment — for Texas local businesses. Website Launch $497, AI Receptionist $149/mo, Launch Bundle $597.";
+  "New mobile-first website in 7 days, plus an AI receptionist that answers every call and books the appointment. Website $497, Receptionist $149/mo.";
 const OG_IMAGE = {
   url: "/og.png",
   width: 1200,
@@ -26,15 +26,6 @@ export const metadata: Metadata = {
   },
   description: SITE_DESCRIPTION,
   alternates: { canonical: SITE_URL },
-  keywords: [
-    "AI receptionist",
-    "website for small business",
-    "booking forecast",
-    "demand forecasting",
-    "small business automation",
-    "demand forecasting Texas",
-    "AI agency Dallas",
-  ],
   authors: [{ name: "VilouraAI LLC" }],
   openGraph: {
     title: SITE_TITLE,

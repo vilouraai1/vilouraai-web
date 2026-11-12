@@ -3,9 +3,9 @@ import { NichePage, nicheMetadata, type Niche } from "~/app/_components/NichePag
 const NICHE: Niche = {
   slug: "hvac-plumbing",
   label: "HVAC & plumbing",
-  title: "AI receptionist & website for HVAC and plumbers | VilouraAI",
+  title: "AI receptionist & website for HVAC and plumbers",
   description:
-    "When the AC is out or a pipe bursts, customers call — and they call the business that picks up. VilouraAI answers every call for your HVAC or plumbing business, books the job, and gives you a new website, live in 7 days.",
+    "When the AC is out or a pipe bursts, customers call the business that picks up. We answer every call, book the job, and build your website.",
   heroEyebrow: "For HVAC & plumbing · Website $497 · Receptionist $149/mo",
   heroHeading: "When the AC is out, they call whoever picks up.",
   heroBody:

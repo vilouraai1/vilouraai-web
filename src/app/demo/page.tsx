@@ -8,9 +8,9 @@ import {
 import { Reveal } from "~/app/_components/Reveal";
 
 export const metadata: Metadata = {
-  title: "Try the forecast on your own numbers | VilouraAI",
+  title: "Try the forecast on your own numbers",
   description:
-    "Paste 12 weeks of bookings, jobs, or orders and see an instant mini-forecast chart with a 4-week trend projection. Free, in your browser, nothing uploaded. Plus a sample AI receptionist call script and transcript demo.",
+    "Paste 12 weeks of bookings, jobs, or orders and see an instant mini-forecast chart with a 4-week trend projection. Free, in your browser.",
   alternates: { canonical: "https://vilouraai.com/demo" },
   openGraph: {
     title: "Try the forecast on your own numbers | VilouraAI",

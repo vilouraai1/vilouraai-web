@@ -3,9 +3,9 @@ import { NichePage, nicheMetadata, type Niche } from "~/app/_components/NichePag
 const NICHE: Niche = {
   slug: "dentists",
   label: "dentists",
-  title: "AI receptionist & website for dentists — $149/mo | VilouraAI",
+  title: "AI receptionist & website for dentists — $149/mo",
   description:
-    "A missed call is a missed patient. VilouraAI answers every call for your dental practice, books cleanings and checkups, answers insurance questions, and texts you a summary. Plus a new website, live in 7 days.",
+    "A missed call is a missed patient. We answer every call for your dental practice, book cleanings and checkups, and build your new website. $497.",
   heroEyebrow: "For dentists · Website $497 · Receptionist $149/mo",
   heroHeading: "A missed call is a missed patient.",
   heroBody:

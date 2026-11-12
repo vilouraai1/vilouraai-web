@@ -19,6 +19,7 @@ const NEW_PAGES: { url: string; priority: number }[] = [
   { url: "https://vilouraai.com/hvac-plumbing", priority: 0.8 },
   { url: "https://vilouraai.com/auto-repair", priority: 0.8 },
   { url: "https://vilouraai.com/new-business", priority: 0.8 },
+  { url: "https://vilouraai.com/free-seo-audit", priority: 0.8 },
 ];
 
 export default function sitemap(): MetadataRoute.Sitemap {
@@ -37,13 +38,13 @@ export default function sitemap(): MetadataRoute.Sitemap {
     })),
     {
       url: "https://vilouraai.com/compare",
-      lastModified: new Date("2026-10-12"),
+      lastModified: new Date("2026-11-12"),
       changeFrequency: "monthly",
       priority: 0.8,
     },
     {
       url: "https://vilouraai.com/checklist",
-      lastModified: new Date("2026-10-12"),
+      lastModified: new Date("2026-11-12"),
       changeFrequency: "monthly",
       priority: 0.8,
     },
@@ -55,7 +56,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     },
     {
       url: "https://vilouraai.com/locations",
-      lastModified: new Date("2026-10-15"),
+      lastModified: new Date("2026-11-12"),
       changeFrequency: "monthly",
       priority: 0.8,
     },

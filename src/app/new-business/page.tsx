@@ -3,9 +3,9 @@ import { NichePage, nicheMetadata, type Niche } from "~/app/_components/NichePag
 const NICHE: Niche = {
   slug: "new-business",
   label: "new businesses",
-  title: "Website & AI receptionist for new businesses | VilouraAI",
+  title: "Website & AI receptionist for new businesses",
   description:
-    "Just opened? Look established from day one. VilouraAI builds your first website in 7 days, answers every call from the start, and makes sure Google — and AI assistants — can find you.",
+    "Just opened? Look established from day one. We build your first website in 7 days, answer every call, and make sure Google can find you.",
   heroEyebrow: "For new businesses · Website $497 · Receptionist $149/mo",
   heroHeading: "Just opened? Look established from day one.",
   heroBody:

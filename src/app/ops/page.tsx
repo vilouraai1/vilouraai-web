@@ -5,7 +5,7 @@ import { OpsTaskCard } from "./_components/OpsTaskCard";
 export const dynamic = "force-dynamic";
 
 export const metadata: Metadata = {
-  title: "Ops · VilouraAI",
+  title: "Ops",
   robots: { index: false, follow: false },
 };
 

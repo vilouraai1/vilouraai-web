@@ -3,9 +3,9 @@ import { NichePage, nicheMetadata, type Niche } from "~/app/_components/NichePag
 const NICHE: Niche = {
   slug: "salons",
   label: "salons & barbers",
-  title: "AI receptionist & website for salons and barbers | VilouraAI",
+  title: "AI receptionist & website for salons and barbers",
   description:
-    "Empty chairs cost money. VilouraAI answers every call for your salon or barbershop, books cuts and color, and gives you a new website with online booking — live in 7 days. Website $497, receptionist $149/mo.",
+    "Empty chairs cost money. We answer every call for your salon or barbershop, book cuts and color, and build a website with online booking. $497.",
   heroEyebrow: "For salons & barbers · Website $497 · Receptionist $149/mo",
   heroHeading: "Empty chairs cost money. Missed calls fill them — for someone else.",
   heroBody:

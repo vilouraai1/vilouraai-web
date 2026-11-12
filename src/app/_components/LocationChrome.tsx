@@ -67,6 +67,12 @@ export function LocationFooter() {
             Demo
           </a>
           <a
+            href="/free-seo-audit"
+            className="transition-colors hover:text-paper"
+          >
+            Free SEO audit
+          </a>
+          <a
             href={PRISQO_URL}
             target="_blank"
             rel="noopener noreferrer"
@@ -84,7 +90,11 @@ export function LocationFooter() {
           </a>
         </nav>
         <p className="text-sm text-paper/60">
-          © 2026 VilouraAI LLC · Lewisville, Texas
+          © 2026 VilouraAI LLC · Lewisville, Texas ·{" "}
+          <a href="tel:+14694965431" className="hover:text-paper">
+            (469) 496-5431
+          </a>{" "}
+          · Open daily 7:00 AM–7:00 PM
         </p>
       </div>
     </footer>

@@ -23,7 +23,7 @@ export type Niche = {
 
 export function nicheMetadata(niche: Niche): Metadata {
   return {
-    title: `${niche.title} | VilouraAI`,
+    title: niche.title,
     description: niche.description,
     alternates: { canonical: `https://vilouraai.com/${niche.slug}` },
     openGraph: {

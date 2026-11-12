@@ -8,12 +8,12 @@ import { BOOKING_URL } from "~/app/_components/offers";
 import { Reveal } from "~/app/_components/Reveal";
 
 export const metadata: Metadata = {
-  title: "Website Launch $497 — a new site, live in 7 days | VilouraAI",
+  title: "Website Launch $497 — new site, live in 7 days",
   description:
-    "A mobile-first 5-page website for your Texas business: home, services, about, reviews, contact and booking, plus a Google Business Profile tune-up and basic local SEO. $497 one-time, live in 7 days.",
+    "A mobile-first 5-page website for your Texas business — home, services, about, reviews, contact and booking. $497 one-time, live in 7 days.",
   alternates: { canonical: "https://vilouraai.com/website" },
   openGraph: {
-    title: "Website Launch $497 — a new site, live in 7 days | VilouraAI",
+    title: "Website Launch $497 — new site, live in 7 days | VilouraAI",
     description:
       "A mobile-first 5-page website: home, services, about, reviews, contact and booking, plus a Google Business Profile tune-up and basic local SEO. $497 one-time, live in 7 days.",
     url: "https://vilouraai.com/website",
@@ -31,7 +31,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Website Launch $497 — a new site, live in 7 days | VilouraAI",
+    title: "Website Launch $497 — new site, live in 7 days | VilouraAI",
     description:
       "A mobile-first 5-page website for your Texas business. $497 one-time, live in 7 days.",
     images: ["/og.png"],
@@ -223,6 +223,24 @@ export default function WebsitePage() {
               <p className="mt-10 max-w-2xl leading-relaxed text-ink/70">
                 Plus the Google Business Profile tune-up and basic local SEO,
                 so nearby customers can actually find the new site.
+              </p>
+              <p className="mt-4 max-w-2xl leading-relaxed text-ink/70">
+                A new site works best when the phone gets answered too — pair
+                it with the{" "}
+                <a
+                  href="/ai-receptionist"
+                  className="font-bold text-pine hover:underline"
+                >
+                  AI Receptionist ($149/mo)
+                </a>
+                . Not sure where your current site stands? Get a{" "}
+                <a
+                  href="/free-seo-audit"
+                  className="font-bold text-pine hover:underline"
+                >
+                  free SEO audit
+                </a>{" "}
+                first.
               </p>
             </Reveal>
           </div>
