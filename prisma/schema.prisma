@@ -1,0 +1,53 @@
+// Prisma schema for VilouraAI marketing site.
+// Uses Postgres in all environments (Vercel Postgres / Neon).
+// Local dev: point DATABASE_URL at the same Postgres URL.
+
+generator client {
+    provider = "prisma-client-js"
+    output   = "../generated/prisma"
+}
+
+datasource db {
+    provider = "postgresql"
+    url      = env("DATABASE_URL")
+}
+
+model Lead {
+    id        Int      @id @default(autoincrement())
+    name      String
+    email     String
+    business  String?
+    message   String?
+    createdAt DateTime @default(now())
+
+    @@index([email])
+}
+
+// Mirror of the Growth Dashboard artifact state, refreshed by sas's workers
+// (5 AM daily run + task dispatcher) via POST /api/ops/sync. The /ops page
+// reads this live so the phone view never needs a redeploy to stay fresh.
+// Tables are created by the sync endpoint itself (raw SQL, IF NOT EXISTS)
+// because local dev has no production DB access.
+model OpsState {
+    id        String   @id // always "dashboard"
+    data      Json
+    updatedAt DateTime @updatedAt @map("updated_at")
+
+    @@map("ops_state")
+}
+
+// Commands issued from the /ops phone page (approve/edit). The dispatcher
+// worker picks up unprocessed rows, applies them to the dashboard artifact,
+// and marks them processed.
+model OpsAction {
+    id        Int      @id @default(autoincrement())
+    action    String // "approve_item" | "edit_item"
+    list      String // "website" | "business"
+    itemId    String   @map("item_id")
+    patch     Json?
+    processed Boolean  @default(false)
+    createdAt DateTime @default(now()) @map("created_at")
+
+    @@index([processed, createdAt])
+    @@map("ops_action")
+}

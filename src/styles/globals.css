@@ -1,0 +1,56 @@
+@import "tailwindcss";
+
+@theme {
+  --font-display: var(--font-fraunces), Georgia, "Times New Roman", serif;
+  --font-sans: var(--font-archivo), ui-sans-serif, system-ui, "Segoe UI",
+    sans-serif;
+
+  --color-paper: #f7f3ea;
+  --color-parchment: #efe8d7;
+  --color-ink: #1c1813;
+  --color-pine: #17603c;
+  --color-pine-deep: #0e4a2d;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: var(--color-paper);
+  color: var(--color-ink);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+::selection {
+  background: var(--color-pine);
+  color: var(--color-paper);
+}
+
+/* FAQ disclosure */
+details.faq-item summary {
+  list-style: none;
+  cursor: pointer;
+}
+details.faq-item summary::-webkit-details-marker {
+  display: none;
+}
+details.faq-item[open] .faq-chevron {
+  transform: rotate(45deg);
+}
+.faq-chevron {
+  transition: transform 0.25s ease;
+}
+
+/* Accessible focus */
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+textarea:focus-visible,
+summary:focus-visible {
+  outline: 2px solid var(--color-pine);
+  outline-offset: 3px;
+  border-radius: 4px;
+}
