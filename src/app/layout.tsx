@@ -7,14 +7,15 @@ import { Archivo, Fraunces } from "next/font/google";
 import { TRPCReactProvider } from "~/trpc/react";
 
 const SITE_URL = "https://vilouraai.com";
-const SITE_TITLE = "VilouraAI: Know your next 12 weeks of bookings";
+const SITE_TITLE =
+  "VilouraAI: Stop losing customers to voicemail and a broken website";
 const SITE_DESCRIPTION =
-  "Send a simple export of your past bookings. VilouraAI flags the exact weeks you'll turn customers away, 12 weeks out, with probability bands.";
+  "New mobile-first website in 7 days, plus an AI receptionist that answers every call and books the appointment. Website $497, Receptionist $149/mo.";
 const OG_IMAGE = {
   url: "/og.png",
   width: 1200,
   height: 630,
-  alt: "VilouraAI — Your competitors are guessing their next 12 weeks. You won't have to.",
+  alt: "VilouraAI — Stop losing customers to voicemail and a broken website.",
 };
 
 export const metadata: Metadata = {
@@ -25,13 +26,6 @@ export const metadata: Metadata = {
   },
   description: SITE_DESCRIPTION,
   alternates: { canonical: SITE_URL },
-  keywords: [
-    "booking forecast",
-    "demand forecasting",
-    "small business automation",
-    "demand forecasting Texas",
-    "AI agency Dallas",
-  ],
   authors: [{ name: "VilouraAI LLC" }],
   openGraph: {
     title: SITE_TITLE,

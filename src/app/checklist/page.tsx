@@ -8,9 +8,9 @@ import {
 import { Reveal } from "~/app/_components/Reveal";
 
 export const metadata: Metadata = {
-  title: "12-Week Capacity Checklist (free PDF) | VilouraAI",
+  title: "12-Week Capacity Checklist (free PDF)",
   description:
-    "A one-page weekly tracker for local businesses: log bookings vs capacity for 12 weeks, spot the crunch weeks early, and act while there is still time. Free PDF, one email.",
+    "A one-page weekly tracker for local businesses: log bookings vs capacity for 12 weeks, spot crunch weeks early, and act in time. Free PDF.",
   alternates: { canonical: "https://vilouraai.com/checklist" },
   openGraph: {
     title: "12-Week Capacity Checklist (free PDF) | VilouraAI",

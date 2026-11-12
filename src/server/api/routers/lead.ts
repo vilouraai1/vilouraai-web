@@ -6,6 +6,8 @@ const contactInput = z.object({
   name: z.string().trim().min(1, "Name is required").max(100),
   email: z.string().trim().email("Enter a valid email").max(200),
   business: z.string().trim().max(200).optional(),
+  phone: z.string().trim().max(30).optional(),
+  need: z.string().trim().max(100).optional(),
   message: z.string().trim().max(2000).optional(),
 });
 
@@ -21,12 +23,19 @@ export const leadRouter = createTRPCRouter({
   submit: publicProcedure
     .input(contactInput)
     .mutation(async ({ ctx, input }) => {
+      // No dedicated phone/need columns (no migration in this change), so
+      // they are stored at the head of the message field, labeled, so the
+      // owner can read them straight off the Lead row.
+      const parts: string[] = [];
+      if (input.need) parts.push(`Need: ${input.need}`);
+      if (input.phone) parts.push(`Phone: ${input.phone}`);
+      if (input.message) parts.push(input.message);
       const lead = await ctx.db.lead.create({
         data: {
           name: input.name,
           email: input.email,
           business: input.business || null,
-          message: input.message || null,
+          message: parts.length > 0 ? parts.join("\n") : null,
         },
       });
       return { id: lead.id };
