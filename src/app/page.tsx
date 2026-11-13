@@ -2,6 +2,17 @@ import { ContactForm } from "~/app/_components/ContactForm";
 import { ForecastChart } from "~/app/_components/ForecastChart";
 import { Reveal } from "~/app/_components/Reveal";
 import { StickyCta } from "~/app/_components/StickyCta";
+import {
+  BOOKING_URL,
+  CONTACT_EMAIL,
+  OFFERS,
+  PRISQO_URL,
+} from "~/app/_components/offers";
+
+const PRISQO_FREE_CHECK = `${PRISQO_URL}/free-check?ref=viloura`;
+const GOOGLE_PROFILE_URL = "https://share.google/56agIYRJv4O5Jcj5Q";
+const PHONE_DISPLAY = "(469) 496-5431";
+const PHONE_HREF = "tel:+14694965431";
 
 function Eyebrow({ children }: { children: React.ReactNode }) {
   return (
@@ -20,12 +31,11 @@ function SectionHeading({ children }: { children: React.ReactNode }) {
 }
 
 const NAV_LINKS = [
+  { href: "#services", label: "Services" },
+  { href: "#prisqo", label: "AI visibility" },
   { href: "#how-it-works", label: "How it works" },
-  { href: "#pricing", label: "Pricing" },
   { href: "#faq", label: "FAQ" },
 ];
-
-const GOOGLE_PROFILE_URL = "https://share.google/56agIYRJv4O5Jcj5Q";
 
 function Nav() {
   return (
@@ -40,18 +50,115 @@ function Nav() {
         >
           VilouraAI
         </a>
+        <div className="hidden items-center gap-7 md:flex">
+          {NAV_LINKS.map((link) => (
+            <a
+              key={link.href}
+              href={link.href}
+              className="text-sm font-bold text-ink/70 transition-colors hover:text-pine"
+            >
+              {link.label}
+            </a>
+          ))}
+        </div>
         <a
-          href="#contact"
+          href="#audit"
           className="rounded-full bg-pine px-5 py-2.5 text-sm font-bold text-paper transition-colors hover:bg-pine-deep"
         >
-          Get my free forecast
+          Free SEO audit
         </a>
       </nav>
     </header>
   );
 }
 
-function Hero() {
+const AUDIT_INPUT_CLASSES =
+  "w-full rounded-xl border border-ink/15 bg-paper px-4 py-3.5 text-ink placeholder:text-ink/40 transition-colors focus:border-pine focus:outline-none";
+
+/**
+ * The free audit form, posted to FormSubmit (same contract as the
+ * /free-seo-audit page). First FormSubmit submission needs activation
+ * via vilouraai1@gmail.com.
+ */
+function AuditForm() {
+  return (
+    <form
+      action="https://formsubmit.co/vilouraai1@gmail.com"
+      method="POST"
+      className="space-y-4"
+    >
+      <input
+        type="hidden"
+        name="_subject"
+        value="Free SEO audit request — VilouraAI"
+      />
+      <input type="hidden" name="_template" value="table" />
+      <input type="hidden" name="_captcha" value="false" />
+      <input
+        type="hidden"
+        name="_next"
+        value="https://vilouraai.com/?sent=1"
+      />
+      <div>
+        <label htmlFor="audit-business" className="mb-2 block text-sm font-bold">
+          Business name
+        </label>
+        <input
+          id="audit-business"
+          name="business"
+          type="text"
+          required
+          autoComplete="organization"
+          placeholder="Bright Smile Dental"
+          aria-label="Business name"
+          className={AUDIT_INPUT_CLASSES}
+        />
+      </div>
+      <div>
+        <label htmlFor="audit-website" className="mb-2 block text-sm font-bold">
+          Website
+        </label>
+        <input
+          id="audit-website"
+          name="website"
+          type="url"
+          required
+          autoComplete="url"
+          placeholder="https://yourbusiness.com"
+          aria-label="Website address"
+          className={AUDIT_INPUT_CLASSES}
+        />
+      </div>
+      <div>
+        <label htmlFor="audit-email" className="mb-2 block text-sm font-bold">
+          Email
+        </label>
+        <input
+          id="audit-email"
+          name="email"
+          type="email"
+          required
+          autoComplete="email"
+          placeholder="you@yourbusiness.com"
+          aria-label="Email address"
+          className={AUDIT_INPUT_CLASSES}
+        />
+      </div>
+      <button
+        type="submit"
+        aria-label="Get my free SEO audit"
+        className="w-full rounded-full bg-pine px-6 py-4 font-display text-lg font-bold text-paper transition-colors hover:bg-pine-deep"
+      >
+        Get my free SEO audit
+      </button>
+      <p className="text-center text-sm text-ink/60">
+        One page, by email, within a few business days. No obligation.
+      </p>
+    </form>
+  );
+}
+
+function Hero({ sent }: { sent: boolean }) {
   return (
     <section id="top" className="relative overflow-hidden pt-16">
       <div className="mx-auto max-w-6xl px-5 pb-16 pt-12 sm:px-8 sm:pt-16 lg:pb-24 lg:pt-20">
@@ -59,47 +166,83 @@ function Hero() {
           <div className="lg:col-span-7">
             <Reveal immediate>
               <Eyebrow>
-                VilouraAI · AI booking forecasts · Lewisville, TX
+                VilouraAI · Websites & AI receptionist · Lewisville, TX
               </Eyebrow>
             </Reveal>
             <Reveal immediate delay={80}>
               <h1 className="font-display text-[2.6rem] font-black leading-[1.04] tracking-tight sm:text-6xl lg:text-[4.1rem]">
-                Your competitors are guessing their next 12 weeks. You
-                won&apos;t have to.
+                A new website in 7 days. Every call answered.
               </h1>
             </Reveal>
             <Reveal immediate delay={160}>
               <p className="mt-6 max-w-xl text-lg leading-relaxed text-ink/70">
-                Free booking forecast for Texas businesses. We flag the exact
-                weeks you&apos;ll turn customers away, with probability bands
-                instead of guesses — so you staff them, price them, and keep
-                them before they go to someone else.
+                VilouraAI builds mobile-first websites for Dallas–Fort Worth
+                small businesses and answers every call with an AI
+                receptionist that books the appointment. Start with a free
+                SEO audit and see exactly what Google and AI assistants think
+                of your site today.
               </p>
             </Reveal>
             <Reveal immediate delay={240}>
-              <div className="mt-9">
+              <div className="mt-9 flex flex-col gap-4 sm:flex-row sm:items-center">
                 <a
-                  href="#contact"
-                  className="inline-block rounded-full bg-pine px-8 py-4 font-display text-lg font-bold text-paper transition-colors hover:bg-pine-deep"
+                  href="#audit"
+                  className="inline-block rounded-full bg-pine px-8 py-4 text-center font-display text-lg font-bold text-paper transition-colors hover:bg-pine-deep"
                 >
-                  Get my free forecast
+                  Get my free SEO audit
                 </a>
-                <p className="mt-4 text-sm text-ink/60">
-                  Free 12-week forecast. No logins. No new software. You keep
-                  the numbers either way. I personally reply within one
-                  business day.
-                </p>
+                <a
+                  href={PRISQO_FREE_CHECK}
+                  className="inline-block rounded-full border border-ink/20 px-8 py-4 text-center font-display text-lg font-bold text-ink transition-colors hover:border-pine hover:text-pine"
+                >
+                  Check AI Visibility ($19)
+                </a>
               </div>
+              <p className="mt-4 text-sm text-ink/60">
+                Free audit. No logins. No new software. You keep the audit
+                either way.
+              </p>
             </Reveal>
           </div>
           <Reveal immediate delay={200} className="lg:col-span-5">
-            <figure className="overflow-hidden rounded-xl border border-ink/10 bg-white px-4 pt-4 shadow-[0_24px_60px_-30px_rgba(28,24,19,0.35)]">
-              <ForecastChart />
-              <figcaption className="border-t border-ink/10 px-5 py-4 text-sm leading-relaxed text-ink/60">
-                Illustrative sample: holiday demand running past capacity.
-                Your forecast is built on your bookings, not these numbers.
-              </figcaption>
-            </figure>
+            <div
+              id="audit"
+              className="scroll-mt-24 rounded-xl border border-ink/10 bg-white p-7 shadow-[0_24px_60px_-30px_rgba(28,24,19,0.35)] sm:p-8"
+            >
+              {sent ? (
+                <div role="status" className="py-6 text-center">
+                  <p className="font-display text-3xl font-black tracking-tight">
+                    Got it — thank you.
+                  </p>
+                  <p className="mt-3 leading-relaxed text-ink/70">
+                    Your free SEO audit is on its way by email, within a few
+                    business days. If you would rather talk it through first,
+                    book a 15-min call below.
+                  </p>
+                  <a
+                    href={BOOKING_URL}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="mt-6 inline-block rounded-full bg-pine px-8 py-4 font-display text-base font-bold text-paper transition-colors hover:bg-pine-deep"
+                  >
+                    Book a 15-min call
+                  </a>
+                </div>
+              ) : (
+                <>
+                  <p className="font-display text-2xl font-bold tracking-tight">
+                    Free SEO audit
+                  </p>
+                  <p className="mt-2 text-sm leading-relaxed text-ink/60">
+                    Three fields. We reply by email within a few business
+                    days.
+                  </p>
+                  <div className="mt-6">
+                    <AuditForm />
+                  </div>
+                </>
+              )}
+            </div>
           </Reveal>
         </div>
       </div>
@@ -107,61 +250,320 @@ function Hero() {
   );
 }
 
-const TRAP_POINTS = [
+function PrisqoSection() {
+  return (
+    <section
+      id="prisqo"
+      aria-labelledby="prisqo-heading"
+      className="scroll-mt-20 border-t border-ink/10 bg-parchment/60"
+    >
+      <div className="mx-auto max-w-6xl px-5 py-20 sm:px-8 lg:py-28">
+        <div className="grid items-center gap-12 lg:grid-cols-12">
+          <div className="lg:col-span-7">
+            <Reveal>
+              <Eyebrow>Prisqo · AI visibility</Eyebrow>
+              <SectionHeading>
+                <span id="prisqo-heading">
+                  Does AI recommend your business?
+                </span>
+              </SectionHeading>
+              <p className="mt-5 max-w-2xl text-lg leading-relaxed text-ink/70">
+                Your next customer is asking ChatGPT, Perplexity, and Google
+                AI for the best business near them — not scrolling a results
+                page. Prisqo asks those AI assistants about businesses like
+                yours and shows you, in plain words, whether yours gets
+                named. If it does not, the report shows what is missing.
+              </p>
+              <p className="mt-4 max-w-2xl leading-relaxed text-ink/70">
+                One report, $19, one time. No subscription, no account.
+              </p>
+            </Reveal>
+            <Reveal delay={120}>
+              <div className="mt-9 flex flex-col gap-4 sm:flex-row sm:items-center">
+                <a
+                  href={PRISQO_FREE_CHECK}
+                  className="inline-block rounded-full bg-pine px-8 py-4 text-center font-display text-lg font-bold text-paper transition-colors hover:bg-pine-deep"
+                >
+                  Check AI Visibility ($19)
+                </a>
+                <a
+                  href={`${PRISQO_URL}?ref=viloura`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="font-bold text-pine underline-offset-4 hover:underline"
+                >
+                  Learn more about Prisqo →
+                </a>
+              </div>
+            </Reveal>
+          </div>
+          <Reveal delay={160} className="lg:col-span-5">
+            <div className="rounded-xl border border-ink/10 bg-white p-8">
+              <p className="font-display text-xl font-bold tracking-tight">
+                What the $19 report tells you
+              </p>
+              <ul className="mt-5 space-y-3">
+                {[
+                  "Whether AI assistants name your business when asked",
+                  "Whether you make their top 3 — and who does instead",
+                  "What is missing when you are not named",
+                ].map((item) => (
+                  <li key={item} className="flex gap-3 text-ink/75">
+                    <svg
+                      viewBox="0 0 16 16"
+                      aria-hidden="true"
+                      className="mt-1 h-4 w-4 shrink-0 text-pine"
+                      fill="none"
+                      stroke="currentColor"
+                      strokeWidth={2.5}
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                    >
+                      <path d="M2.5 8.5l3.5 3.5 7-8" />
+                    </svg>
+                    <span>{item}</span>
+                  </li>
+                ))}
+              </ul>
+              <p className="mt-6 text-sm leading-relaxed text-ink/60">
+                Or try the free 10-second check first — same link, no
+                payment.
+              </p>
+            </div>
+          </Reveal>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+type ServiceCard = {
+  name: string;
+  price: string;
+  priceNote: string;
+  tagline: string;
+  features: string[];
+  note?: string;
+  cta: string;
+  href: string;
+  featured?: boolean;
+};
+
+const SERVICE_CARDS: ServiceCard[] = [
   {
-    title: "Discounts train customers to wait",
-    body: "Every promo teaches your regulars one lesson: never pay full price. The margin you give away in December does not come back in January.",
+    name: "Free SEO audit",
+    price: "Free",
+    priceNote: "complimentary",
+    tagline: "One page, plain words.",
+    features: [
+      "Titles & descriptions — what Google sees on every page",
+      "Local SEO & Google Business Profile check",
+      "Speed & mobile — how it reads on a phone",
+      "AI visibility — whether AI assistants can recommend you",
+      "The three fixes that matter most",
+    ],
+    cta: "Get my free audit",
+    href: "#audit",
   },
   {
-    title: "Turned-away bookings do not come back",
-    body: "When you are overbooked, the clients you cannot fit do not wait politely. They book with whoever had a chair open.",
+    name: "Prisqo AI Visibility Report",
+    price: "$19",
+    priceNote: "one-time",
+    tagline: "Does AI recommend your business?",
+    features: [
+      "Asks AI assistants about businesses like yours",
+      "Shows whether yours gets named — and in the top 3",
+      "Names who does get recommended instead",
+      "What is missing when you are not named",
+      "Pay once. No subscription, no account.",
+    ],
+    cta: "Check AI visibility",
+    href: PRISQO_FREE_CHECK,
   },
   {
-    title: "Someone else sees it coming",
-    body: "The businesses that plan their busy weeks open extra hours and hold full price. The rest discount blindly and wonder where the margin went.",
+    name: OFFERS.website.name,
+    price: OFFERS.website.price,
+    priceNote: OFFERS.website.priceNote,
+    tagline: OFFERS.website.tagline,
+    features: [...OFFERS.website.features],
+    note: OFFERS.website.carePlan,
+    cta: OFFERS.website.cta,
+    href: "#contact",
+  },
+  {
+    name: OFFERS.receptionist.name,
+    price: OFFERS.receptionist.price,
+    priceNote: OFFERS.receptionist.priceNote,
+    tagline: OFFERS.receptionist.tagline,
+    features: [...OFFERS.receptionist.features],
+    note: OFFERS.receptionist.carePlan,
+    cta: OFFERS.receptionist.cta,
+    href: "#contact",
+  },
+  {
+    name: OFFERS.bundle.name,
+    price: OFFERS.bundle.price,
+    priceNote: OFFERS.bundle.priceNote,
+    tagline: OFFERS.bundle.tagline,
+    features: [...OFFERS.bundle.features],
+    cta: OFFERS.bundle.cta,
+    href: "#contact",
+    featured: true,
   },
 ];
 
-function DiscountTrap() {
+function Services() {
   return (
     <section
-      aria-labelledby="trap-heading"
-      className="border-t border-ink/10 bg-parchment/60"
+      id="services"
+      aria-labelledby="services-heading"
+      className="scroll-mt-20 border-t border-ink/10"
     >
       <div className="mx-auto max-w-6xl px-5 py-20 sm:px-8 lg:py-28">
         <Reveal>
-          <Eyebrow>The problem</Eyebrow>
+          <Eyebrow>Services</Eyebrow>
           <SectionHeading>
-            <span id="trap-heading">The discount trap</span>
+            <span id="services-heading">Start free. Pay when it pays.</span>
           </SectionHeading>
           <p className="mt-5 max-w-2xl text-lg leading-relaxed text-ink/70">
-            Slow week? Drop a discount. Busy week? Turn people away at the
-            door. Most local businesses run this playbook on instinct, which
-            means discounting the weeks that need help and giving away margin
-            in the weeks that do not. Nobody can feel the difference coming.
-            A forecast can.
+            The audit is free because it sells itself. If the numbers do
+            not make you money, do not spend another dollar with us.
           </p>
         </Reveal>
-        <div className="mt-10">
-          {TRAP_POINTS.map((point, i) => (
-            <Reveal key={point.title} delay={i * 100}>
-              <div className="grid gap-2 border-t border-ink/15 py-8 md:grid-cols-12 md:gap-6">
-                <p
-                  className="font-display text-xl font-black text-pine md:col-span-2"
-                  aria-hidden="true"
+        <div className="mt-12 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+          {SERVICE_CARDS.map((card, i) => (
+            <Reveal key={card.name} delay={(i % 3) * 120}>
+              <article
+                className={`flex h-full flex-col rounded-xl border bg-white p-8 ${
+                  card.featured
+                    ? "border-pine shadow-[0_24px_60px_-30px_rgba(23,96,60,0.45)]"
+                    : "border-ink/10"
+                }`}
+              >
+                {card.featured && (
+                  <p className="mb-4 inline-flex w-fit rounded-full bg-pine px-3 py-1 text-xs font-bold uppercase tracking-wider text-paper">
+                    Best value
+                  </p>
+                )}
+                <h3 className="font-display text-xl font-bold">{card.name}</h3>
+                <p className="mt-2 font-display text-5xl font-black tracking-tight">
+                  {card.price}
+                </p>
+                <p className="mt-1 text-sm text-ink/60">
+                  {card.priceNote} · {card.tagline}
+                </p>
+                <ul className="mt-6 flex-1 space-y-3">
+                  {card.features.map((feature) => (
+                    <li key={feature} className="flex gap-3 text-ink/75">
+                      <svg
+                        viewBox="0 0 16 16"
+                        aria-hidden="true"
+                        className="mt-1 h-4 w-4 shrink-0 text-pine"
+                        fill="none"
+                        stroke="currentColor"
+                        strokeWidth={2.5}
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                      >
+                        <path d="M2.5 8.5l3.5 3.5 7-8" />
+                      </svg>
+                      <span>{feature}</span>
+                    </li>
+                  ))}
+                </ul>
+                {card.note && (
+                  <p className="mt-5 text-sm leading-relaxed text-ink/60">
+                    {card.note}
+                  </p>
+                )}
+                <a
+                  href={card.href}
+                  aria-label={`${card.cta} — ${card.name} ${card.price} ${card.priceNote}`}
+                  className={`mt-8 rounded-full px-6 py-3.5 text-center font-display text-base font-bold transition-colors ${
+                    card.featured
+                      ? "bg-pine text-paper hover:bg-pine-deep"
+                      : "border border-ink/20 text-ink hover:border-pine hover:text-pine"
+                  }`}
                 >
-                  0{i + 1}
-                </p>
-                <h3 className="font-display text-2xl font-bold tracking-tight md:col-span-4">
-                  {point.title}
-                </h3>
-                <p className="leading-relaxed text-ink/70 md:col-span-6">
-                  {point.body}
-                </p>
-              </div>
+                  {card.cta}
+                </a>
+              </article>
             </Reveal>
           ))}
-          <div className="border-t border-ink/15" aria-hidden="true" />
+        </div>
+        <Reveal delay={120}>
+          <p className="mt-10 max-w-2xl text-sm leading-relaxed text-ink/55">
+            Still want the booking forecast? The free 12-week forecast and
+            the $495 Forecast Sprint are still available —{" "}
+            <a
+              href="/demo"
+              className="font-bold text-pine underline-offset-4 hover:underline"
+            >
+              try the forecast demo
+            </a>
+            .
+          </p>
+        </Reveal>
+      </div>
+    </section>
+  );
+}
+
+// Booking forecast — kept from the live site per Kiwi's Nov 12 amendment
+// (task muse-seo-1): the redesigned homepage highlights Prisqo, the free SEO
+// audit, and the existing forecasting. Copy, chart, routes and prices are the
+// live site's own; only the styling matches the new design.
+function Forecast() {
+  return (
+    <section
+      id="forecast"
+      aria-labelledby="forecast-heading"
+      className="scroll-mt-20 border-t border-ink/10"
+    >
+      <div className="mx-auto max-w-6xl px-5 py-20 sm:px-8 lg:py-28">
+        <div className="grid items-center gap-12 lg:grid-cols-2">
+          <Reveal>
+            <Eyebrow>Booking forecast</Eyebrow>
+            <SectionHeading>
+              <span id="forecast-heading">
+                Your competitors are guessing their next 12 weeks. You
+                won&apos;t have to.
+              </span>
+            </SectionHeading>
+            <p className="mt-6 max-w-xl text-lg leading-relaxed text-ink/70">
+              Free booking forecast for Texas businesses. We flag the exact
+              weeks you&apos;ll turn customers away, with probability bands
+              instead of guesses — so you staff them, price them, and keep
+              them before they go to someone else.
+            </p>
+            <ul className="mt-8 space-y-3 text-base leading-relaxed">
+              <li>Free 12-week booking forecast, built on your numbers</li>
+              <li>Overbook weeks flagged, with probability bands</li>
+              <li>$495 Forecast Sprint for the 90-day deep dive</li>
+              <li>Yours to keep, no strings</li>
+            </ul>
+            <div className="mt-10 flex flex-wrap gap-4">
+              <a
+                href="#contact"
+                className="inline-block rounded-full bg-pine px-8 py-4 text-center font-display text-lg font-bold text-paper transition-colors hover:bg-pine-deep"
+              >
+                Get my free forecast
+              </a>
+              <a
+                href="/demo"
+                className="inline-block rounded-full border border-ink/20 px-8 py-4 text-center font-display text-lg font-bold text-ink transition-colors hover:border-pine hover:text-pine"
+              >
+                Try the forecast demo
+              </a>
+            </div>
+          </Reveal>
+          <Reveal delay={120}>
+            <ForecastChart />
+            <p className="mt-4 text-sm leading-relaxed text-ink/55">
+              Illustrative sample: holiday demand running past capacity. Your
+              forecast is built on your bookings, not these numbers.
+            </p>
+          </Reveal>
         </div>
       </div>
     </section>
@@ -171,18 +573,18 @@ function DiscountTrap() {
 const STEPS = [
   {
     n: "01",
-    title: "Share 12 weeks of bookings",
-    body: "A simple export from whatever you already use. No logins, no new software. Ten minutes of your time.",
+    title: "Submit your URL",
+    body: "Send your website address and email. Three fields, two minutes. No logins, no new software.",
   },
   {
     n: "02",
-    title: "We model what comes next",
-    body: "Our forecasting engine reads your seasonal patterns and flags the exact weeks that will overbook, with probability bands instead of guesses.",
+    title: "AI & SEO analysis",
+    body: "We check what Google and AI assistants see when they look at your site: titles, local listings, speed, and whether AI recommends you.",
   },
   {
     n: "03",
-    title: "You decide what to do with it",
-    body: "Run the playbook yourself, or keep us on monthly. Either way, the forecast is yours to keep.",
+    title: "Actionable report & growth plan",
+    body: "You get a one-page audit by email: what is working, what is broken, and the three fixes that matter most. No obligation — if the audit says your site is fine, we will say so.",
   },
 ];
 
@@ -191,7 +593,7 @@ function HowItWorks() {
     <section
       id="how-it-works"
       aria-labelledby="how-heading"
-      className="border-t border-ink/10"
+      className="scroll-mt-20 border-t border-ink/10 bg-parchment/60"
     >
       <div className="mx-auto max-w-6xl px-5 py-20 sm:px-8 lg:py-28">
         <Reveal>
@@ -223,317 +625,30 @@ function HowItWorks() {
   );
 }
 
-const TIERS = [
-  {
-    name: "Free forecast",
-    price: "Free",
-    tagline: "See what is coming.",
-    features: [
-      "12-week booking forecast",
-      "Built on your real numbers",
-      "Overbook weeks flagged",
-      "Yours to keep, no strings",
-    ],
-    cta: "Get my free forecast",
-    featured: false,
-  },
-  {
-    name: "Forecast Sprint",
-    price: "$495",
-    tagline: "One-time deep dive.",
-    features: [
-      "Everything in the free forecast",
-      "Capacity plan for 90 days",
-      "Staffing and hours roadmap",
-      "Automation opportunities mapped",
-    ],
-    cta: "Book the Sprint",
-    featured: true,
-  },
-  {
-    name: "Partner",
-    price: "~$1k/mo",
-    tagline: "We watch the numbers.",
-    features: [
-      "Monthly forecast refresh",
-      "Demand alerts before crunch weeks",
-      "Booking automation, managed",
-      "Quarterly strategy review",
-    ],
-    cta: "Talk to us",
-    featured: false,
-  },
-];
-
-function Pricing() {
-  return (
-    <section
-      id="pricing"
-      aria-labelledby="pricing-heading"
-      className="border-t border-ink/10 bg-parchment/60"
-    >
-      <div className="mx-auto max-w-6xl px-5 py-20 sm:px-8 lg:py-28">
-        <Reveal>
-          <Eyebrow>Pricing</Eyebrow>
-          <SectionHeading>
-            <span id="pricing-heading">Start free. Pay when it pays.</span>
-          </SectionHeading>
-          <p className="mt-5 max-w-2xl text-lg leading-relaxed text-ink/70">
-            The forecast is free because it sells itself. If the numbers do
-            not make you money, do not spend another dollar with us.
-          </p>
-        </Reveal>
-        <div className="mt-12 grid gap-6 lg:grid-cols-3">
-          {TIERS.map((tier, i) => (
-            <Reveal key={tier.name} delay={i * 120}>
-              <article
-                className={`flex h-full flex-col rounded-xl border bg-white p-8 ${
-                  tier.featured
-                    ? "border-pine shadow-[0_24px_60px_-30px_rgba(23,96,60,0.45)]"
-                    : "border-ink/10"
-                }`}
-              >
-                {tier.featured && (
-                  <p className="mb-4 inline-flex w-fit rounded-full bg-pine px-3 py-1 text-xs font-bold uppercase tracking-wider text-paper">
-                    Most popular
-                  </p>
-                )}
-                <h3 className="font-display text-xl font-bold">{tier.name}</h3>
-                <p className="mt-2 font-display text-5xl font-black tracking-tight">
-                  {tier.price}
-                </p>
-                <p className="mt-1 text-sm text-ink/60">{tier.tagline}</p>
-                <ul className="mt-6 flex-1 space-y-3">
-                  {tier.features.map((feature) => (
-                    <li key={feature} className="flex gap-3 text-ink/75">
-                      <svg
-                        viewBox="0 0 16 16"
-                        aria-hidden="true"
-                        className="mt-1 h-4 w-4 shrink-0 text-pine"
-                        fill="none"
-                        stroke="currentColor"
-                        strokeWidth={2.5}
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                      >
-                        <path d="M2.5 8.5l3.5 3.5 7-8" />
-                      </svg>
-                      <span>{feature}</span>
-                    </li>
-                  ))}
-                </ul>
-                <a
-                  href="#contact"
-                  className={`mt-8 rounded-full px-6 py-3.5 text-center font-display text-base font-bold transition-colors ${
-                    tier.featured
-                      ? "bg-pine text-paper hover:bg-pine-deep"
-                      : "border border-ink/20 text-ink hover:border-pine hover:text-pine"
-                  }`}
-                >
-                  {tier.cta}
-                </a>
-              </article>
-            </Reveal>
-          ))}
-        </div>
-      </div>
-    </section>
-  );
-}
-
-const MATH_STATS = [
-  {
-    value: "~$16k",
-    label: "turned away in 12 weeks",
-    note: "At 70 appointment slots a week",
-  },
-  {
-    value: "~$1,800",
-    label: "at stake in the single worst week",
-    note: "One week. One schedule. Real money.",
-  },
-  {
-    value: "12 wks",
-    label: "of warning before it hits",
-    note: "Time to open hours, not panic",
-  },
-];
-
-function IllustrativeMath() {
-  return (
-    <section aria-labelledby="math-heading" className="border-t border-ink/10">
-      <div className="mx-auto max-w-6xl px-5 py-20 sm:px-8 lg:py-28">
-        <Reveal>
-          <Eyebrow>Illustrative example</Eyebrow>
-          <SectionHeading>
-            <span id="math-heading">What the math looks like</span>
-          </SectionHeading>
-          <p className="mt-5 max-w-2xl text-lg leading-relaxed text-ink/70">
-            Modeled figures for a typical local business. Not a promise and
-            not your numbers. Your forecast is built on your bookings, and it
-            replaces every figure on this page.
-          </p>
-        </Reveal>
-        <div className="mt-12 grid gap-10 md:grid-cols-3">
-          {MATH_STATS.map((stat, i) => (
-            <Reveal key={stat.label} delay={i * 120}>
-              <div className="border-t-2 border-pine pt-6">
-                <p className="font-display text-6xl font-black tracking-tight text-pine">
-                  {stat.value}
-                </p>
-                <p className="mt-3 font-bold">{stat.label}</p>
-                <p className="mt-1 text-sm text-ink/60">{stat.note}</p>
-              </div>
-            </Reveal>
-          ))}
-        </div>
-      </div>
-    </section>
-  );
-}
-
-const WHY_NOW_STATS = [
-  {
-    value: "20–50%",
-    label: "fewer forecasting errors with AI-driven methods",
-    note: "McKinsey industry research, vs traditional forecasting",
-  },
-  {
-    value: "65%",
-    prefix: "up to",
-    label: "reduction in lost sales and unavailability",
-    note: "McKinsey industry research, AI-driven forecasting",
-  },
-  {
-    value: "Close to 3 in 4",
-    label: "of supply-chain functions still rely on spreadsheets",
-    note: "McKinsey — that gap is your opening",
-  },
-];
-
-function WhyNow() {
-  return (
-    <section
-      aria-labelledby="whynow-heading"
-      className="border-t border-ink/10 bg-parchment/60"
-    >
-      <div className="mx-auto max-w-6xl px-5 py-20 sm:px-8 lg:py-28">
-        <Reveal>
-          <Eyebrow>Why now</Eyebrow>
-          <SectionHeading>
-            <span id="whynow-heading">
-              In the AI age, this stopped being optional.
-            </span>
-          </SectionHeading>
-          <p className="mt-5 max-w-2xl text-lg leading-relaxed text-ink/70">
-            AI-driven forecasting used to be a big-company luxury. Now it
-            runs on twelve weeks of booking history — data you already have.
-            The businesses adopting it aren&apos;t just more efficient;
-            they&apos;re playing a faster game than everyone still planning
-            on gut feel. Every quarter you wait, the gap gets harder to
-            close.
-          </p>
-        </Reveal>
-        <div className="mt-12 grid gap-10 md:grid-cols-3">
-          {WHY_NOW_STATS.map((stat, i) => (
-            <Reveal key={stat.label} delay={i * 120}>
-              <div className="border-t-2 border-pine pt-6">
-                <p className="font-display text-6xl font-black tracking-tight text-pine">
-                  {stat.prefix && (
-                    <span className="mr-2 align-middle font-sans text-xl font-bold uppercase tracking-wider text-ink/50">
-                      {stat.prefix}
-                    </span>
-                  )}
-                  {stat.value}
-                </p>
-                <p className="mt-3 font-bold">{stat.label}</p>
-                <p className="mt-1 text-sm text-ink/60">{stat.note}</p>
-              </div>
-            </Reveal>
-          ))}
-        </div>
-        <Reveal delay={120}>
-          <p className="mt-10 max-w-2xl text-sm leading-relaxed text-ink/55">
-            General industry figures, not promises and not your numbers. Your
-            free forecast replaces every one of them with the real thing.
-          </p>
-        </Reveal>
-      </div>
-    </section>
-  );
-}
-
-const SECTORS = [
-  {
-    title: "Med spas and salons",
-    body: "Holiday rushes, membership demand, and the weeks your chairs fill themselves. Know which ones before you discount them.",
-  },
-  {
-    title: "Home services",
-    body: "Seasonal swings you can staff for instead of react to. Summer does not have to surprise you every year.",
-  },
-  {
-    title: "Restaurants",
-    body: "Covers, staffing, and prep timed to actual demand. Slow Tuesdays and slammed Saturdays, planned separately.",
-  },
-];
-
-function Sectors() {
-  return (
-    <section aria-labelledby="sectors-heading" className="border-t border-ink/10">
-      <div className="mx-auto max-w-6xl px-5 py-20 sm:px-8 lg:py-28">
-        <Reveal>
-          <Eyebrow>Who it fits</Eyebrow>
-          <SectionHeading>
-            <span id="sectors-heading">
-              If your weeks are not all the same, this pays for itself.
-            </span>
-          </SectionHeading>
-        </Reveal>
-        <div className="mt-10">
-          {SECTORS.map((sector, i) => (
-            <Reveal key={sector.title} delay={i * 100}>
-              <div className="grid gap-2 border-t border-ink/15 py-7 md:grid-cols-12 md:gap-6">
-                <h3 className="font-display text-2xl font-bold tracking-tight md:col-span-4">
-                  {sector.title}
-                </h3>
-                <p className="leading-relaxed text-ink/70 md:col-span-8">
-                  {sector.body}
-                </p>
-              </div>
-            </Reveal>
-          ))}
-          <div className="border-t border-ink/15" aria-hidden="true" />
-        </div>
-      </div>
-    </section>
-  );
-}
-
 const FAQS = [
   {
-    q: "What data do you need?",
-    a: "Twelve weeks of booking history. A CSV export works. If you can count appointments per week, you have enough.",
+    q: "How much does it cost?",
+    a: "Website Launch is $497 one-time. AI Receptionist is $149 a month, with no setup fee and the first 14 days free. The Launch Bundle is $597: the site, the first month of the receptionist, and a Prisqo AI-visibility report ($19 value). The free SEO audit and the booking forecast cost nothing.",
   },
   {
-    q: "How long does it take?",
-    a: "The free forecast takes a few days once we have your export. The Forecast Sprint runs inside two weeks.",
+    q: "How fast do I get it?",
+    a: "Your free SEO audit arrives by email within a few business days. Your new site is live in 7 days from when we have your details and photos. The AI receptionist is set up with your hours, services, and prices, and we test it with you before it answers a real call.",
   },
   {
-    q: "Do you need my logins?",
-    a: "No. We never ask for your passwords or account access. You send an export, we send a forecast.",
+    q: "Is there a contract? What about the 14-day trial?",
+    a: "No contract. The receptionist is month to month and you can cancel anytime — the first 14 days are free, so you can hear it answer real calls before you pay. The website is yours once it is built. The optional $29-a-month care plan (hosting, edits, uptime) is month to month too.",
   },
   {
-    q: "What kinds of businesses is this for?",
-    a: "Any business where busy weeks and slow weeks look different: salons, med spas, home services, restaurants, studios. If your schedule is not flat, forecasting pays for itself.",
+    q: "What does the free SEO audit deliver?",
+    a: "A one-page audit of your website, written in plain words: what is working, what is broken, and the three fixes that matter most. It covers titles and descriptions, local SEO and your Google Business Profile, speed and mobile, and AI visibility. Delivered by email — no dashboard to learn, no logins to hand over.",
   },
   {
-    q: "What does the free forecast cost me?",
-    a: "Ten minutes and an export. You keep the forecast either way, even if you never pay us a dollar.",
+    q: "What if the AI receptionist can't answer a question?",
+    a: "It does not guess. It takes a message and texts you a summary, so you can call the customer back. You decide what it is allowed to answer, and we start narrow on purpose.",
   },
   {
-    q: "What happens after the free forecast?",
-    a: "If the numbers show money being left on the table, most owners book the $495 Forecast Sprint: a 90-day capacity plan, a staffing and hours roadmap, and your automation opportunities mapped. If the forecast does not impress you, you keep it and we part friends.",
+    q: "Do I keep my phone number?",
+    a: "Yes. The receptionist answers on your existing business number. Your customers call the same number they always have.",
   },
 ];
 
@@ -542,7 +657,7 @@ function Faq() {
     <section
       id="faq"
       aria-labelledby="faq-heading"
-      className="border-t border-ink/10 bg-parchment/60"
+      className="scroll-mt-20 border-t border-ink/10"
     >
       <div className="mx-auto max-w-3xl px-5 py-20 sm:px-8 lg:py-28">
         <Reveal>
@@ -578,7 +693,7 @@ function Faq() {
 
 function Founder() {
   return (
-    <section aria-labelledby="founder-heading" className="border-t border-ink/10">
+    <section aria-labelledby="founder-heading" className="border-t border-ink/10 bg-parchment/60">
       <div className="mx-auto max-w-3xl px-5 py-20 sm:px-8 lg:py-28">
         <Reveal>
           <Eyebrow>Who we are</Eyebrow>
@@ -587,8 +702,9 @@ function Founder() {
           </SectionHeading>
           <p className="mt-5 text-lg leading-relaxed text-ink/70">
             VilouraAI is run by Adharsh J., who goes by Jim, out of
-            Lewisville, Texas. The rule here is simple: the numbers have to be
-            useful or we do not ship them. That is the whole business model.
+            Lewisville, Texas. The rule here is simple: the numbers have to
+            be useful or we do not ship them. That is the whole business
+            model.
           </p>
         </Reveal>
       </div>
@@ -601,16 +717,23 @@ function Contact() {
     <section
       id="contact"
       aria-labelledby="contact-heading"
-      className="border-t border-ink/10 bg-parchment/60"
+      className="scroll-mt-20 border-t border-ink/10"
     >
       <div className="mx-auto max-w-3xl px-5 py-20 sm:px-8 lg:py-28">
         <Reveal>
           <Eyebrow>Contact</Eyebrow>
           <SectionHeading>
-            <span id="contact-heading">Get my free forecast</span>
+            <span id="contact-heading">Tell us what you need</span>
           </SectionHeading>
           <p className="mt-5 text-lg leading-relaxed text-ink/70">
-            Three fields. We reply within one business day.
+            Pick a service and we reply within one business day. Or call{" "}
+            <a
+              href={PHONE_HREF}
+              className="font-bold text-pine underline-offset-4 hover:underline"
+            >
+              {PHONE_DISPLAY}
+            </a>{" "}
+            — every day, 7:00 AM–7:00 PM.
           </p>
         </Reveal>
         <Reveal delay={120}>
@@ -626,56 +749,68 @@ function Contact() {
 function Footer() {
   return (
     <footer className="border-t border-ink/10 bg-ink text-paper">
-      <div className="mx-auto flex max-w-6xl flex-col items-center justify-between gap-6 px-5 py-10 sm:flex-row sm:px-8">
-        <p className="font-display text-xl font-black tracking-tight">
-          VilouraAI
-        </p>
-        <nav aria-label="Footer" className="flex gap-6 text-sm text-paper/60">
-          {NAV_LINKS.map((link) => (
+      <div className="mx-auto max-w-6xl px-5 py-10 sm:px-8">
+        <div className="flex flex-col items-center justify-between gap-6 sm:flex-row">
+          <p className="font-display text-xl font-black tracking-tight">
+            VilouraAI
+          </p>
+          <nav aria-label="Footer" className="flex flex-wrap justify-center gap-6 text-sm text-paper/60">
+            {NAV_LINKS.map((link) => (
+              <a
+                key={link.href}
+                href={link.href}
+                className="transition-colors hover:text-paper"
+              >
+                {link.label}
+              </a>
+            ))}
             <a
-              key={link.href}
-              href={link.href}
+              href="/locations"
               className="transition-colors hover:text-paper"
             >
-              {link.label}
+              Locations
             </a>
-          ))}
-          <a
-            href="/locations"
-            className="transition-colors hover:text-paper"
-          >
-            Locations
-          </a>
-          <a
-            href="/compare"
-            className="transition-colors hover:text-paper"
-          >
-            Compare
-          </a>
-          <a
-            href="/checklist"
-            className="transition-colors hover:text-paper"
-          >
-            Checklist
-          </a>
-          <a
-            href="/demo"
-            className="transition-colors hover:text-paper"
-          >
-            Demo
-          </a>
-          <a
-            href={GOOGLE_PROFILE_URL}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="transition-colors hover:text-paper"
-          >
-            Find us on Google
-          </a>
-        </nav>
-        <p className="text-sm text-paper/60">
-          © 2026 VilouraAI LLC · Lewisville, Texas
-        </p>
+            <a href="/compare" className="transition-colors hover:text-paper">
+              Compare
+            </a>
+            <a
+              href="/checklist"
+              className="transition-colors hover:text-paper"
+            >
+              Checklist
+            </a>
+            <a href="/demo" className="transition-colors hover:text-paper">
+              Demo
+            </a>
+            <a
+              href={GOOGLE_PROFILE_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="transition-colors hover:text-paper"
+            >
+              Find us on Google
+            </a>
+          </nav>
+        </div>
+        <div className="mt-8 flex flex-col items-center justify-between gap-3 border-t border-paper/10 pt-6 text-sm text-paper/60 sm:flex-row">
+          <p>© 2026 VilouraAI LLC · Lewisville, Texas</p>
+          <p>
+            <a
+              href={`mailto:${CONTACT_EMAIL}`}
+              className="transition-colors hover:text-paper"
+            >
+              {CONTACT_EMAIL}
+            </a>
+            {" · "}
+            <a
+              href={PHONE_HREF}
+              className="transition-colors hover:text-paper"
+            >
+              {PHONE_DISPLAY}
+            </a>
+            {" · Daily 7:00 AM–7:00 PM"}
+          </p>
+        </div>
       </div>
     </footer>
   );
@@ -685,68 +820,6 @@ function StructuredData() {
   const data = {
     "@context": "https://schema.org",
     "@graph": [
-      {
-        "@type": "ProfessionalService",
-        "@id": "https://vilouraai.com/#business",
-        name: "VilouraAI LLC",
-        url: "https://vilouraai.com",
-        description:
-          "AI booking forecasts for local businesses. Free 12-week forecast, $495 Forecast Sprint, and monthly forecasting partnerships.",
-        email: "vilouraai3@gmail.com",
-        sameAs: ["https://share.google/56agIYRJv4O5Jcj5Q"],
-        address: {
-          "@type": "PostalAddress",
-          addressLocality: "Lewisville",
-          addressRegion: "TX",
-          addressCountry: "US",
-        },
-        geo: {
-          "@type": "GeoCoordinates",
-          latitude: 33.0,
-          longitude: -96.98,
-        },
-        areaServed: [
-          "Dallas",
-          "Fort Worth",
-          "Plano",
-          "Frisco",
-          "Lewisville",
-          "Southlake",
-          "Arlington",
-          "Irving",
-        ],
-        priceRange: "Free - $1000",
-        hasOfferCatalog: {
-          "@type": "OfferCatalog",
-          name: "Forecasting services",
-          itemListElement: [
-            {
-              "@type": "Offer",
-              name: "Free 12-week forecast",
-              price: "0",
-              priceCurrency: "USD",
-              description:
-                "A free 12-week booking forecast built on your own numbers, with the weeks you'll overbook flagged.",
-            },
-            {
-              "@type": "Offer",
-              name: "Forecast Sprint",
-              price: "495",
-              priceCurrency: "USD",
-              description:
-                "A 90-day capacity plan, a staffing and hours roadmap, and your automation opportunities mapped.",
-            },
-            {
-              "@type": "Offer",
-              name: "Monthly forecasting partnership",
-              price: "1000",
-              priceCurrency: "USD",
-              description:
-                "Ongoing monthly forecasting and planning support for your business.",
-            },
-          ],
-        },
-      },
       {
         "@type": "FAQPage",
         mainEntity: FAQS.map((faq) => ({
@@ -765,19 +838,23 @@ function StructuredData() {
   );
 }
 
-export default function Home() {
+export default async function Home({
+  searchParams,
+}: {
+  searchParams?: Promise<{ sent?: string }>;
+}) {
+  const params = await searchParams;
+  const sent = params?.sent === "1";
   return (
     <>
       <StructuredData />
       <Nav />
       <main>
-        <Hero />
-        <DiscountTrap />
+        <Hero sent={sent} />
+        <PrisqoSection />
+        <Services />
+        <Forecast />
         <HowItWorks />
-        <Pricing />
-        <IllustrativeMath />
-        <WhyNow />
-        <Sectors />
         <Faq />
         <Founder />
         <Contact />

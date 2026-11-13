@@ -17,7 +17,7 @@ export const CITIES: City[] = [
   {
     slug: "dallas",
     name: "Dallas",
-    metaTitle: "Demand forecasting in Dallas | VilouraAI",
+    metaTitle: "Demand forecasting in Dallas",
     metaDescription:
       "Free 12-week booking forecast for Dallas businesses. See the weeks you'll turn customers away before they book with the salon, spa, or restaurant next door.",
     heroEyebrow: "Demand forecasting in Dallas, TX",
@@ -70,7 +70,7 @@ export const CITIES: City[] = [
   {
     slug: "fort-worth",
     name: "Fort Worth",
-    metaTitle: "Demand forecasting in Fort Worth | VilouraAI",
+    metaTitle: "Demand forecasting in Fort Worth",
     metaDescription:
       "Free 12-week booking forecast for Fort Worth businesses. Plan around Stockyards weekends, seasonal swings, and the west-side growth — before your schedule overflows.",
     heroEyebrow: "Demand forecasting in Fort Worth, TX",
@@ -123,7 +123,7 @@ export const CITIES: City[] = [
   {
     slug: "plano",
     name: "Plano",
-    metaTitle: "Demand forecasting in Plano | VilouraAI",
+    metaTitle: "Demand forecasting in Plano",
     metaDescription:
       "Free 12-week booking forecast for Plano businesses. Legacy West foot traffic, appointment-driven clients, and corporate calendars — planned a quarter ahead.",
     heroEyebrow: "Demand forecasting in Plano, TX",
@@ -176,7 +176,7 @@ export const CITIES: City[] = [
   {
     slug: "frisco",
     name: "Frisco",
-    metaTitle: "Demand forecasting in Frisco | VilouraAI",
+    metaTitle: "Demand forecasting in Frisco",
     metaDescription:
       "Free 12-week booking forecast for Frisco businesses. New neighborhoods, sports traffic, and the fastest-growing market in DFW — planned before the rush.",
     heroEyebrow: "Demand forecasting in Frisco, TX",
@@ -229,7 +229,7 @@ export const CITIES: City[] = [
   {
     slug: "arlington",
     name: "Arlington",
-    metaTitle: "Demand forecasting in Arlington | VilouraAI",
+    metaTitle: "Demand forecasting in Arlington",
     metaDescription:
       "Free 12-week booking forecast for Arlington businesses. Stadium events, game days, and entertainment-district surges — staffed before they hit.",
     heroEyebrow: "Demand forecasting in Arlington, TX",
@@ -282,7 +282,7 @@ export const CITIES: City[] = [
   {
     slug: "lewisville",
     name: "Lewisville",
-    metaTitle: "Demand forecasting in Lewisville | VilouraAI",
+    metaTitle: "Demand forecasting in Lewisville",
     metaDescription:
       "Free 12-week booking forecast for Lewisville businesses. Your home-town market, your own numbers — see the weeks you'll overbook before they arrive.",
     heroEyebrow: "Demand forecasting in Lewisville, TX",

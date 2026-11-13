@@ -10,24 +10,24 @@ export function StickyCta() {
   const [show, setShow] = useState(false);
 
   useEffect(() => {
-    const contact = document.getElementById("contact");
-    let contactVisible = false;
+    const audit = document.getElementById("audit");
+    let auditVisible = false;
 
     const onScroll = () =>
-      setShow(window.scrollY > 650 && !contactVisible);
+      setShow(window.scrollY > 650 && !auditVisible);
     onScroll();
     window.addEventListener("scroll", onScroll, { passive: true });
 
     let observer: IntersectionObserver | undefined;
-    if (contact && typeof IntersectionObserver !== "undefined") {
+    if (audit && typeof IntersectionObserver !== "undefined") {
       observer = new IntersectionObserver(
         (entries) => {
-          contactVisible = entries[0]?.isIntersecting ?? false;
+          auditVisible = entries[0]?.isIntersecting ?? false;
           onScroll();
         },
         { threshold: 0.15 },
       );
-      observer.observe(contact);
+      observer.observe(audit);
     }
 
     return () => {
@@ -45,10 +45,10 @@ export function StickyCta() {
     >
       <div className="px-4 pt-3">
         <a
-          href="#contact"
+          href="#audit"
           className="block rounded-full bg-pine px-6 py-3.5 text-center font-display text-base font-bold text-paper transition-colors active:bg-pine-deep"
         >
-          Get my free forecast
+          Get my free SEO audit
         </a>
       </div>
     </div>

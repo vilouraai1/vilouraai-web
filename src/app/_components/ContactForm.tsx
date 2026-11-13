@@ -3,21 +3,32 @@
 import { useState, type FormEvent } from "react";
 
 import { api } from "~/trpc/react";
+import { BOOKING_URL, CONTACT_EMAIL } from "~/app/_components/offers";
 
 const inputClasses =
   "w-full rounded-xl border border-ink/15 bg-paper px-4 py-3 text-ink placeholder:text-ink/40 transition-colors focus:border-pine focus:outline-none";
 
+const NEED_OPTIONS = [
+  "Website Launch — $497",
+  "AI Receptionist — $149/mo",
+  "Launch Bundle — $597",
+  "Booking forecast — free",
+  "Something else",
+] as const;
+
 /**
  * Booking link shown on the thank-you panel after a lead submits.
- * Paste a Calendly / Cal.com / SavvyCal event URL here to let new leads
- * book their walkthrough call in the same flow. Empty = panel only.
+ * Calendly (free tier) event URL. Empty = panel only.
  */
-const BOOKING_URL: string = "https://calendly.com/vilouraai";
+const CALENDLY_URL: string = BOOKING_URL;
 
 export function ContactForm() {
   const [name, setName] = useState("");
-  const [email, setEmail] = useState("");
   const [business, setBusiness] = useState("");
+  const [phone, setPhone] = useState("");
+  const [email, setEmail] = useState("");
+  const [need, setNeed] = useState<string>(NEED_OPTIONS[0]);
+  const [message, setMessage] = useState("");
   const [formError, setFormError] = useState<string | null>(null);
 
   const submit = api.lead.submit.useMutation({
@@ -40,6 +51,9 @@ export function ContactForm() {
       name: name.trim(),
       email: email.trim(),
       business: business.trim() || undefined,
+      phone: phone.trim() || undefined,
+      need,
+      message: message.trim() || undefined,
     });
   };
 
@@ -50,22 +64,31 @@ export function ContactForm() {
         className="rounded-xl border border-pine/30 bg-paper p-8 text-center"
       >
         <p className="font-display text-3xl font-black tracking-tight">
-          You are on the list.
+          Got it — thank you.
         </p>
         <p className="mt-3 text-ink/70">
-          We will reach out within one business day about your free forecast.
-          Talk soon, {name.split(" ")[0] || "there"}.
+          We will reach out within one business day about your {need}. Talk
+          soon, {name.split(" ")[0] || "there"}.
         </p>
-        {BOOKING_URL !== "" && (
+        {CALENDLY_URL !== "" && (
           <a
-            href={BOOKING_URL}
+            href={CALENDLY_URL}
             target="_blank"
             rel="noopener noreferrer"
             className="mt-6 inline-block rounded-full bg-pine px-8 py-4 font-display text-base font-bold text-paper transition-colors hover:bg-pine-deep"
           >
-            Pick a time for your walkthrough call
+            Book a 15-min call
           </a>
         )}
+        <p className="mt-4 text-sm text-ink/60">
+          Prefer email?{" "}
+          <a
+            href={`mailto:${CONTACT_EMAIL}?subject=${encodeURIComponent(`VilouraAI — ${need}`)}`}
+            className="font-medium text-pine underline-offset-4 hover:underline"
+          >
+            {CONTACT_EMAIL}
+          </a>
+        </p>
       </div>
     );
   }
@@ -93,6 +116,44 @@ export function ContactForm() {
       </div>
       <div>
         <label
+          htmlFor="contact-business"
+          className="mb-2 block text-sm font-bold"
+        >
+          Business
+        </label>
+        <input
+          id="contact-business"
+          type="text"
+          required
+          maxLength={200}
+          autoComplete="organization"
+          value={business}
+          onChange={(e) => setBusiness(e.target.value)}
+          placeholder="Bluebonnet Home Services, Dallas"
+          className={inputClasses}
+        />
+      </div>
+      <div>
+        <label
+          htmlFor="contact-phone"
+          className="mb-2 block text-sm font-bold"
+        >
+          Phone
+        </label>
+        <input
+          id="contact-phone"
+          type="tel"
+          required
+          maxLength={30}
+          autoComplete="tel"
+          value={phone}
+          onChange={(e) => setPhone(e.target.value)}
+          placeholder="(214) 555-0148"
+          className={inputClasses}
+        />
+      </div>
+      <div>
+        <label
           htmlFor="contact-email"
           className="mb-2 block text-sm font-bold"
         >
@@ -112,20 +173,38 @@ export function ContactForm() {
       </div>
       <div>
         <label
-          htmlFor="contact-business"
+          htmlFor="contact-need"
           className="mb-2 block text-sm font-bold"
         >
-          Business
+          What you need
         </label>
-        <input
-          id="contact-business"
-          type="text"
-          required
-          maxLength={200}
-          autoComplete="organization"
-          value={business}
-          onChange={(e) => setBusiness(e.target.value)}
-          placeholder="Bluebonnet Home Services, Dallas"
+        <select
+          id="contact-need"
+          value={need}
+          onChange={(e) => setNeed(e.target.value)}
+          className={inputClasses}
+        >
+          {NEED_OPTIONS.map((option) => (
+            <option key={option} value={option}>
+              {option}
+            </option>
+          ))}
+        </select>
+      </div>
+      <div>
+        <label
+          htmlFor="contact-message"
+          className="mb-2 block text-sm font-bold"
+        >
+          Anything else? <span className="font-normal">(optional)</span>
+        </label>
+        <textarea
+          id="contact-message"
+          rows={3}
+          maxLength={2000}
+          value={message}
+          onChange={(e) => setMessage(e.target.value)}
+          placeholder="e.g. My site was suspended last month, and I miss calls every afternoon."
           className={inputClasses}
         />
       </div>
@@ -139,15 +218,24 @@ export function ContactForm() {
         disabled={submit.isPending}
         className="w-full rounded-full bg-pine px-6 py-4 font-display text-lg font-bold text-paper transition-colors hover:bg-pine-deep disabled:cursor-not-allowed disabled:opacity-60"
       >
-        {submit.isPending ? "Sending..." : "Get my free forecast"}
+        {submit.isPending ? "Sending..." : "Send — I'll reply within one business day"}
       </button>
       <p className="text-center text-sm text-ink/60">
         Prefer email?{" "}
         <a
-          href="mailto:vilouraai3@gmail.com?subject=Free%2012-week%20forecast"
+          href={`mailto:${CONTACT_EMAIL}?subject=${encodeURIComponent("VilouraAI — new enquiry")}`}
           className="font-medium text-pine underline-offset-4 hover:underline"
         >
-          vilouraai3@gmail.com
+          {CONTACT_EMAIL}
+        </a>{" "}
+        · Or{" "}
+        <a
+          href={CALENDLY_URL}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="font-medium text-pine underline-offset-4 hover:underline"
+        >
+          book a 15-min call
         </a>
       </p>
     </form>
