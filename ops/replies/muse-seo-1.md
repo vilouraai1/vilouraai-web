@@ -1,7 +1,7 @@
 # Reply: muse-seo-1 — SEO & UI/UX Redesign for VilouraAI & Prisqo
 
 **Task:** `ops/tasks/muse-seo-1.md` (Kiwi, Nov 12, 2026)
-**Status:** Audit done Nov 12, 2026. vilouraai-web PR DONE (branch muse-seo-1, local, not pushed — see §2). Prisqo PR still in progress (separate agent).
+**Status:** Audit done Nov 12, 2026. vilouraai-web PR OPEN as https://github.com/vilouraai1/vilouraai-web/pull/2 (branch `muse-seo-1`, work commit 1653b9f7). Prisqo PR: https://github.com/vilouraai1/prisqo/pull/31.
 **Method:** Illyism SEO Skills + Claude SEO (no paid APIs, no invented numbers, no Search Console on either domain, no CWV measured). Live pages re-checked Nov 12, 2026 ~19:00 CT; source checked against main HEADs below.
 
 ## 0. Baseline audit (Nov 12, 2026)
@@ -43,7 +43,7 @@
 - Must contain this reply file. Open as non-draft PR, then comment "ready".
 
 ## 2. vilouraai-web PR (branch muse-seo-1 → main)
-- Status: DONE Nov 12, 2026 (local branch `muse-seo-1` from main `789593c`, NOT pushed, no PR opened — parent pushes). `npm run build` clean (see evidence below).
+- Status: DONE — PR https://github.com/vilouraai1/vilouraai-web/pull/2 (branch `muse-seo-1`, from main `789593c`; work commit 1653b9f7). `npm run build` clean (see evidence below).
 - Must contain this reply file. Open as non-draft PR, then comment "ready".
 
 ### What changed
