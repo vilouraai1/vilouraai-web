@@ -8,14 +8,14 @@ import {
 import { Reveal } from "~/app/_components/Reveal";
 
 export const metadata: Metadata = {
-  title: "Demand forecasting across Dallas–Fort Worth | VilouraAI",
+  title: "Websites and AI receptionists across DFW",
   description:
-    "Free 12-week booking forecasts for businesses across Dallas–Fort Worth: Dallas, Fort Worth, Plano, Frisco, Arlington, and Lewisville. See the weeks you'll turn customers away before they happen.",
+    "Websites, AI receptionists, and free 12-week booking forecasts for DFW businesses — Dallas, Fort Worth, Plano, Frisco, Arlington, Lewisville.",
   alternates: { canonical: "https://vilouraai.com/locations" },
   openGraph: {
-    title: "Demand forecasting across Dallas–Fort Worth | VilouraAI",
+    title: "Websites and AI receptionists across DFW",
     description:
-      "Free 12-week booking forecasts for businesses across Dallas–Fort Worth: Dallas, Fort Worth, Plano, Frisco, Arlington, and Lewisville.",
+      "Websites, AI receptionists, and free 12-week booking forecasts for DFW businesses — Dallas, Fort Worth, Plano, Frisco, Arlington, Lewisville.",
     url: "https://vilouraai.com/locations",
     siteName: "VilouraAI",
     type: "website",
@@ -25,16 +25,54 @@ export const metadata: Metadata = {
         url: "/og.png",
         width: 1200,
         height: 630,
-        alt: "VilouraAI — Your competitors are guessing their next 12 weeks. You won't have to.",
+        alt: "VilouraAI — New website in 7 days. Every call answered.",
       },
     ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Websites and AI receptionists across DFW",
+    description:
+      "Websites, AI receptionists, and free 12-week booking forecasts for DFW businesses — Dallas, Fort Worth, Plano, Frisco, Arlington, Lewisville.",
+    images: ["/og.png"],
   },
   robots: { index: true, follow: true },
 };
 
 export default function LocationsPage() {
+  const structuredData = {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "ItemList",
+        "@id": "https://vilouraai.com/locations#cities",
+        name: "Cities served in Dallas–Fort Worth",
+        itemListElement: CITIES.map((city, i) => ({
+          "@type": "ListItem",
+          position: i + 1,
+          url: `https://vilouraai.com/locations/${city.slug}`,
+          name: `Demand forecasting in ${city.name}`,
+        })),
+      },
+      {
+        "@type": "ProfessionalService",
+        "@id": "https://vilouraai.com/#business",
+        name: "VilouraAI LLC",
+        url: "https://vilouraai.com",
+        description:
+          "VilouraAI builds new mobile-first websites in 7 days and answers every call with an AI receptionist that books the appointment — for Texas local businesses. Website Launch $497, AI Receptionist $149/mo, Launch Bundle $597. Free 12-week booking forecast.",
+        areaServed: "Dallas–Fort Worth",
+        priceRange: "Free - $597",
+      },
+    ],
+  };
+
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
+      />
       <LocationHeader />
       <main>
         <section className="pt-16">

@@ -37,7 +37,7 @@ export async function generateMetadata({
           url: "/og.png",
           width: 1200,
           height: 630,
-          alt: "VilouraAI — Your competitors are guessing their next 12 weeks. You won't have to.",
+          alt: "VilouraAI — New website in 7 days. Every call answered.",
         },
       ],
     },
@@ -78,7 +78,7 @@ export default async function CityPage({
         name: "VilouraAI LLC",
         url: "https://vilouraai.com",
         description:
-          "AI booking forecasts for local businesses. Free 12-week forecast, $495 Forecast Sprint, and monthly forecasting partnerships.",
+          "VilouraAI builds new mobile-first websites in 7 days and answers every call with an AI receptionist that books the appointment — for Texas local businesses. Website Launch $497, AI Receptionist $149/mo, Launch Bundle $597. Free 12-week booking forecast.",
         address: {
           "@type": "PostalAddress",
           addressLocality: "Lewisville",
@@ -91,7 +91,7 @@ export default async function CityPage({
           addressRegion: "TX",
           addressCountry: "US",
         },
-        priceRange: "Free - $1000",
+        priceRange: "Free - $597",
       },
       {
         "@type": "FAQPage",
