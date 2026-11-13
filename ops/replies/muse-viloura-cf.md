@@ -2,7 +2,7 @@
 
 **Status: DONE, verified locally. Not deployed, DNS untouched.**
 Branch: `muse-viloura-cf` (from main `6e30e8c`, the PR #2 redesign).
-Repo: `vilouraai1/vilouraai-web`. No PR opened — the parent does the push.
+Repo: `vilouraai1/vilouraai-web`. PR: https://github.com/vilouraai1/vilouraai-web/pull/3 (work commit 5d0c5507).
 
 ## 0. Summary
 
