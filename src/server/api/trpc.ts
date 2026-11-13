@@ -10,8 +10,6 @@ import { initTRPC } from "@trpc/server";
 import superjson from "superjson";
 import { ZodError } from "zod";
 
-import { db } from "~/server/db";
-
 /**
  * 1. CONTEXT
  *
@@ -25,8 +23,9 @@ import { db } from "~/server/db";
  * @see https://trpc.io/docs/server/context
  */
 export const createTRPCContext = async (opts: { headers: Headers }) => {
+  // Database access lives in ~/server/db (raw D1 SQL) and is called
+  // directly by the routers; it is not part of the tRPC context.
   return {
-    db,
     ...opts,
   };
 };

@@ -7,7 +7,11 @@ export const env = createEnv({
    * isn't built with invalid env vars.
    */
   server: {
-    DATABASE_URL: z.string().url(),
+    // DATABASE_URL is only used by Prisma CLI workflows (migrate diff,
+    // db push against a local file). The app itself runs on Cloudflare
+    // D1 via the Prisma D1 adapter (src/server/db.ts) and does not read
+    // this at runtime, so it is optional here and unset on Workers.
+    DATABASE_URL: z.string().url().optional(),
     NODE_ENV: z
       .enum(["development", "test", "production"])
       .default("development"),

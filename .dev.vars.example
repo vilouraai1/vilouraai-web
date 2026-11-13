@@ -1,0 +1,15 @@
+# Local preview secrets for `npm run preview:cf` (wrangler dev).
+# Copy to `.dev.vars` and fill in TEST values only — never real ones.
+# `.dev.vars` is gitignored; this file has no real values.
+#
+# D1 (Cloudflare D1) is the database — no DATABASE_URL is needed at
+# runtime. DATABASE_URL is only used by Prisma CLI workflows
+# (migrate diff / db push against a local file).
+#
+# Ops dashboard (/ops) Basic Auth gate. The middleware fails closed
+# (503) when these are unset.
+OPS_USER=
+OPS_PASS=
+# Bearer token the external dispatcher uses for POST /api/ops/sync.
+# The sync endpoint returns 503 when this is unset.
+OPS_SYNC_SECRET=

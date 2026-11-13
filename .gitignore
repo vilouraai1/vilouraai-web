@@ -11,10 +11,14 @@
 # database
 /prisma/db.sqlite
 /prisma/db.sqlite-journal
+/prisma/dev.db
+/prisma/dev.db-journal
 db.sqlite
 
 # next.js
 /.next/
+/.open-next/
+/.wrangler/
 /out/
 next-env.d.ts
 
@@ -35,6 +39,7 @@ yarn-error.log*
 # do not commit any .env files to git, except for the .env.example file. https://create.t3.gg/en/usage/env-variables#using-environment-variables
 .env
 .env*.local
+.dev.vars
 
 # vercel
 .vercel

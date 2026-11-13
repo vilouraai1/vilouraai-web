@@ -7,6 +7,10 @@ import type { NextRequest } from "next/server";
  * if the vars are not configured, everything under /ops returns 503.
  * The worker sync endpoint (/api/ops/sync) is exempt here and checks its
  * own bearer token (OPS_SYNC_SECRET) in the route handler.
+ *
+ * Runs on Cloudflare Workers via the OpenNext adapter. `Buffer` is a
+ * Node.js global, available because wrangler.jsonc sets the
+ * `nodejs_compat` compatibility flag.
  */
 export function middleware(req: NextRequest) {
   const { pathname } = req.nextUrl;

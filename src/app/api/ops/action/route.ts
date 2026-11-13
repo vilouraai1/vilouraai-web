@@ -1,6 +1,6 @@
 import { NextResponse } from "next/server";
 import { z } from "zod";
-import { db } from "~/server/db";
+import { createOpsAction } from "~/server/db";
 
 const BodySchema = z.object({
   action: z.enum(["approve_item", "edit_item"]),
@@ -24,13 +24,11 @@ export async function POST(req: Request) {
     );
   }
   const { action, list, itemId, patch } = parsed.data;
-  const row = await db.opsAction.create({
-    data: {
-      action,
-      list,
-      itemId,
-      patch: patch === undefined ? undefined : (patch as object),
-    },
+  const row = await createOpsAction({
+    action,
+    list,
+    itemId,
+    patch: patch === undefined ? undefined : patch,
   });
   return NextResponse.json({ ok: true, id: row.id });
 }

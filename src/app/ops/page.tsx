@@ -1,5 +1,5 @@
 import { type Metadata } from "next";
-import { db } from "~/server/db";
+import { getDashboardState } from "~/server/db";
 import { OpsTaskCard } from "./_components/OpsTaskCard";
 
 export const dynamic = "force-dynamic";
@@ -205,7 +205,7 @@ function SectionTitle({ children }: { children: React.ReactNode }) {
 /* ---------- page ---------- */
 
 export default async function OpsPage() {
-  const row = await db.opsState.findUnique({ where: { id: "dashboard" } });
+  const row = await getDashboardState();
   const dash = normalize(row?.data);
   const syncedAt = row?.updatedAt
     ? new Date(row.updatedAt).toLocaleString("en-US", { timeZone: "America/Chicago" })

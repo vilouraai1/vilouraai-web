@@ -73,6 +73,9 @@ export function TRPCReactProvider(props: { children: React.ReactNode }) {
 
 function getBaseUrl() {
   if (typeof window !== "undefined") return window.location.origin;
-  if (process.env.VERCEL_URL) return `https://${process.env.VERCEL_URL}`;
-  return `http://localhost:${process.env.PORT ?? 3000}`;
+  // Server: the app has no tRPC queries (only mutations, which run in
+  // the browser), so this is never used during SSR. There is no Vercel
+  // env on Cloudflare Workers; a relative URL keeps the client working
+  // wherever it is served.
+  return "";
 }

@@ -1,0 +1,21 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "vilouraai-web",
+  "compatibility_date": "2026-11-12",
+  "compatibility_flags": ["nodejs_compat"],
+  "main": ".open-next/worker.js",
+  "assets": {
+    "directory": ".open-next/assets",
+    "binding": "ASSETS"
+  },
+  "d1_databases": [
+    {
+      "binding": "DB",
+      "database_name": "vilouraai-web",
+      // Placeholder — replaced by the real id from `wrangler d1 create vilouraai-web`
+      // at deploy time (see DEPLOY.md). Local preview (wrangler dev) works with
+      // this value: it uses a local D1 database in .wrangler/state.
+      "database_id": "00000000-0000-0000-0000-000000000000"
+    }
+  ]
+}
