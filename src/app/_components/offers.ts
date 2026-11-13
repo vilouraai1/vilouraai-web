@@ -8,9 +8,6 @@
  * - AI Receptionist $149/mo, no setup fee, cancel anytime, first 14 days free.
  * - Launch Bundle $597 (Website Launch + first month of AI Receptionist +
  *   Prisqo AI-visibility report, $19 value).
- * - Founding offer, first 10 clients: bundle $497, receptionist locked at
- *   $129/mo for 12 months. Stated as "10 founding spots" — never show a
- *   countdown or a remaining-spots number, because we do not track it live.
  * - Booking forecast stays a third service: free 12-week forecast,
  *   $495 Forecast Sprint.
  */
@@ -19,8 +16,6 @@ export const BOOKING_URL = "https://calendly.com/vilouraai";
 export const CONTACT_EMAIL = "vilouraai1@gmail.com";
 export const PRISQO_URL = "https://prisqo.vilouraai.com";
 export const GOOGLE_PROFILE_URL = "https://share.google/56agIYRJv4O5Jcj5Q";
-
-export const FOUNDING_SPOTS = 10;
 
 export const OFFERS = {
   website: {
@@ -36,7 +31,7 @@ export const OFFERS = {
       "Live in 7 days",
     ],
     carePlan: "Optional care plan $29/mo: hosting, edits, uptime.",
-    href: "/website",
+    href: "#contact",
     cta: "Get my new site",
   },
   receptionist: {
@@ -52,7 +47,7 @@ export const OFFERS = {
       "Missed-call text-back, so no caller is left hanging",
     ],
     carePlan: "No setup fee. Cancel anytime. First 14 days free.",
-    href: "/ai-receptionist",
+    href: "#contact",
     cta: "Hear the AI receptionist",
   },
   bundle: {
@@ -66,9 +61,8 @@ export const OFFERS = {
       "Prisqo AI-visibility report included ($19 value)",
       "One call to set it all up",
     ],
-    carePlan:
-      "Founding offer: first 10 clients pay $497 for the bundle, and the receptionist stays at $129/mo, locked for 12 months.",
-    href: "/bundle",
+    carePlan: "No setup fee. One call to set it all up.",
+    href: "#contact",
     cta: "Get the bundle",
   },
   forecast: {
@@ -112,9 +106,5 @@ export const SERVICE_FAQS: { q: string; a: string }[] = [
   {
     q: "What do you do with my data?",
     a: "We use your business details only to run your site and answer your calls. We do not sell your data or your customers' data, and we do not share it with anyone except the tools needed to run the service. Ask us anything about this before you sign up.",
-  },
-  {
-    q: "What is the founding offer?",
-    a: "The first 10 clients get the Launch Bundle for $497 instead of $597, and the AI Receptionist locked at $129 a month for 12 months. There is no countdown timer on this page — when the 10 spots are gone, the price goes back up and this line changes.",
   },
 ];
