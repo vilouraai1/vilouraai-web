@@ -1,6 +1,5 @@
 import "~/styles/globals.css";
 
-import { Analytics } from "@vercel/analytics/react";
 import { type Metadata } from "next";
 import { Archivo, Fraunces } from "next/font/google";
 
@@ -193,7 +192,6 @@ export default function RootLayout({
       <body className="bg-paper font-sans text-ink">
         <SiteStructuredData />
         <TRPCReactProvider>{children}</TRPCReactProvider>
-        <Analytics />
       </body>
     </html>
   );

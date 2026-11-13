@@ -20,6 +20,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 1,
     },
     {
+      url: "https://vilouraai.com/pricing",
+      lastModified: UPDATED,
+      changeFrequency: "monthly",
+      priority: 0.9,
+    },
+    {
       url: "https://vilouraai.com/free-seo-audit",
       lastModified: UPDATED,
       changeFrequency: "monthly",

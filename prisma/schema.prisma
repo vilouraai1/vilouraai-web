@@ -1,6 +1,15 @@
 // Prisma schema for VilouraAI marketing site.
-// Uses Postgres in all environments (Vercel Postgres / Neon).
-// Local dev: point DATABASE_URL at the same Postgres URL.
+//
+// DDL source of truth only. The runtime does NOT use the Prisma Client:
+// it talks to Cloudflare D1 (SQLite) with raw SQL in src/server/db.ts.
+// (The Prisma Client + D1 adapter path was tried and does not work under
+// OpenNext on Workers — the query engine cannot load there; see
+// ops/replies/muse-viloura-cf.md §6.) The datasource is declared as
+// sqlite so `prisma migrate diff` produces D1-compatible DDL; at runtime
+// the D1 binding supplies the database and DATABASE_URL is not used.
+// Local Prisma CLI work (migrate diff, db push) can still point
+// DATABASE_URL at a local file (file:./dev.db) — that file is gitignored
+// and must never be committed.
 
 generator client {
     provider = "prisma-client-js"
@@ -8,7 +17,7 @@ generator client {
 }
 
 datasource db {
-    provider = "postgresql"
+    provider = "sqlite"
     url      = env("DATABASE_URL")
 }
 
